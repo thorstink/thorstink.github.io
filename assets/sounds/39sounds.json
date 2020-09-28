@@ -2,7 +2,7 @@
   "sounds": [
     {
       "name": "one",
-      "file": "assets/sounds/wilhelm_scream.ogg",
+      "file": "assets/sounds/sound.mp3",
       "category": "Fun"
     },
     {
@@ -12,45 +12,45 @@
     },
     {
       "name": "three",
-      "file": "assets/sounds/wilhelm_scream.ogg", 
+      "file": "assets/sounds/sound.mp3", 
       "category" : "Sad"
     },
     {
       "name": "four",
-      "file": "assets/sounds/wilhelm_scream.ogg",
+      "file": "assets/sounds/sound.mp3",
       "category" : "Sad"
     },
     {
       "name": "five",
-      "file": "assets/sounds/wilhelm_scream.ogg",
+      "file": "assets/sounds/sound.mp3",
       "category" : "Sad"
     },
     {
       "name": "six",
-      "file": "assets/sounds/wilhelm_scream.ogg",
+      "file": "assets/sounds/sound.mp3",
       "category" : "Oosterschelde(n)"
     },
     {
       "name": "seven",
-      "file": "assets/sounds/wilhelm_scream.ogg",
+      "file": "assets/sounds/sound.mp3",
       "category" : "Oosterschelde(n)"
     },
     {
       "name": "eighy",
-      "file": "assets/sounds/wilhelm_scream.ogg",
+      "file": "assets/sounds/sound.mp3",
       "category" : "Westerschelde(n)"
     },
     {
       "name": "nine",
-      "file": "assets/sounds/wilhelm_scream.ogg"
+      "file": "assets/sounds/sound.mp3"
     },
     {
       "name": "ten",
-      "file": "assets/sounds/wilhelm_scream.ogg"
+      "file": "assets/sounds/sound.mp3"
     },
     {
       "name": "one",
-      "file": "assets/sounds/wilhelm_scream.ogg"
+      "file": "assets/sounds/sound.mp3"
     },
     {
       "name": "two",
@@ -58,39 +58,39 @@
     },
     {
       "name": "three",
-      "file": "assets/sounds/wilhelm_scream.ogg"
+      "file": "assets/sounds/sound.mp3"
     },
     {
       "name": "four",
-      "file": "assets/sounds/wilhelm_scream.ogg"
+      "file": "assets/sounds/sound.mp3"
     },
     {
       "name": "five",
-      "file": "assets/sounds/wilhelm_scream.ogg"
+      "file": "assets/sounds/sound.mp3"
     },
     {
       "name": "six",
-      "file": "assets/sounds/wilhelm_scream.ogg"
+      "file": "assets/sounds/sound.mp3"
     },
     {
       "name": "seven",
-      "file": "assets/sounds/wilhelm_scream.ogg"
+      "file": "assets/sounds/sound.mp3"
     },
     {
       "name": "eighy",
-      "file": "assets/sounds/wilhelm_scream.ogg"
+      "file": "assets/sounds/sound.mp3"
     },
     {
       "name": "nine",
-      "file": "assets/sounds/wilhelm_scream.ogg"
+      "file": "assets/sounds/sound.mp3"
     },
     {
       "name": "ten",
-      "file": "assets/sounds/wilhelm_scream.ogg"
+      "file": "assets/sounds/sound.mp3"
     },
     {
       "name": "one",
-      "file": "assets/sounds/wilhelm_scream.ogg"
+      "file": "assets/sounds/sound.mp3"
     },
     {
       "name": "two",
@@ -98,39 +98,39 @@
     },
     {
       "name": "three",
-      "file": "assets/sounds/wilhelm_scream.ogg"
+      "file": "assets/sounds/sound.mp3"
     },
     {
       "name": "four",
-      "file": "assets/sounds/wilhelm_scream.ogg"
+      "file": "assets/sounds/sound.mp3"
     },
     {
       "name": "five",
-      "file": "assets/sounds/wilhelm_scream.ogg"
+      "file": "assets/sounds/sound.mp3"
     },
     {
       "name": "six",
-      "file": "assets/sounds/wilhelm_scream.ogg"
+      "file": "assets/sounds/sound.mp3"
     },
     {
       "name": "seven",
-      "file": "assets/sounds/wilhelm_scream.ogg"
+      "file": "assets/sounds/sound.mp3"
     },
     {
       "name": "eighy",
-      "file": "assets/sounds/wilhelm_scream.ogg"
+      "file": "assets/sounds/sound.mp3"
     },
     {
       "name": "nine",
-      "file": "assets/sounds/wilhelm_scream.ogg"
+      "file": "assets/sounds/sound.mp3"
     },
     {
       "name": "ten",
-      "file": "assets/sounds/wilhelm_scream.ogg"
+      "file": "assets/sounds/sound.mp3"
     },
     {
       "name": "one",
-      "file": "assets/sounds/wilhelm_scream.ogg"
+      "file": "assets/sounds/sound.mp3"
     },
     {
       "name": "two",
@@ -138,35 +138,35 @@
     },
     {
       "name": "three",
-      "file": "assets/sounds/wilhelm_scream.ogg"
+      "file": "assets/sounds/sound.mp3"
     },
     {
       "name": "four",
-      "file": "assets/sounds/wilhelm_scream.ogg"
+      "file": "assets/sounds/sound.mp3"
     },
     {
       "name": "five",
-      "file": "assets/sounds/wilhelm_scream.ogg"
+      "file": "assets/sounds/sound.mp3"
     },
     {
       "name": "six",
-      "file": "assets/sounds/wilhelm_scream.ogg"
+      "file": "assets/sounds/sound.mp3"
     },
     {
       "name": "seven",
-      "file": "assets/sounds/wilhelm_scream.ogg"
+      "file": "assets/sounds/sound.mp3"
     },
     {
       "name": "eighy",
-      "file": "assets/sounds/wilhelm_scream.ogg"
+      "file": "assets/sounds/sound.mp3"
     },
     {
       "name": "nine",
-      "file": "assets/sounds/wilhelm_scream.ogg"
+      "file": "assets/sounds/sound.mp3"
     },
     {
       "name": "ten",
-      "file": "assets/sounds/wilhelm_scream.ogg"
+      "file": "assets/sounds/sound.mp3"
     }
   ]
 }
