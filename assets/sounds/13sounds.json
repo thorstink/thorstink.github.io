@@ -1,0 +1,84 @@
+{
+  "sounds": [
+    {
+      "name": "one",
+      "file": "assets/sounds/wilhelm_scream.ogg"
+    },
+    {
+      "name": "two",
+      "file": "assets/sounds/wildhelm_scream.ogg"
+    },
+    {
+      "name": "three",
+      "file": "assets/sounds/wilhelm_scream.ogg"
+    },
+    {
+      "name": "four",
+      "file": "assets/sounds/wilhelm_scream.ogg"
+    },
+    {
+      "name": "five",
+      "file": "assets/sounds/wilhelm_scream.ogg"
+    },
+    {
+      "name": "six",
+      "file": "assets/sounds/wilhelm_scream.ogg"
+    },
+    {
+      "name": "seven",
+      "file": "assets/sounds/wilhelm_scream.ogg"
+    },
+    {
+      "name": "eighy",
+      "file": "assets/sounds/wilhelm_scream.ogg"
+    },
+    {
+      "name": "nine",
+      "file": "assets/sounds/wilhelm_scream.ogg"
+    },
+    {
+      "name": "ten",
+      "file": "assets/sounds/wilhelm_scream.ogg"
+    },
+    {
+      "name": "one",
+      "file": "assets/sounds/wilhelm_scream.ogg"
+    },
+    {
+      "name": "two",
+      "file": "assets/sounds/wildhelm_scream.ogg"
+    },
+    {
+      "name": "three",
+      "file": "assets/sounds/wilhelm_scream.ogg"
+    },
+    {
+      "name": "four",
+      "file": "assets/sounds/wilhelm_scream.ogg"
+    },
+    {
+      "name": "five",
+      "file": "assets/sounds/wilhelm_scream.ogg"
+    },
+    {
+      "name": "six",
+      "file": "assets/sounds/wilhelm_scream.ogg"
+    },
+    {
+      "name": "seven",
+      "file": "assets/sounds/wilhelm_scream.ogg"
+    },
+    {
+      "name": "eighy",
+      "file": "assets/sounds/wilhelm_scream.ogg"
+    },
+    {
+      "name": "nine",
+      "file": "assets/sounds/wilhelm_scream.ogg"
+    },
+    {
+      "name": "ten",
+      "file": "assets/sounds/wilhelm_scream.ogg"
+    }
+  ]
+}

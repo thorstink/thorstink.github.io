@@ -1,0 +1,90 @@
+body {
+    display: block;
+    margin: 0px;
+    background-color: ghostwhite;
+    position: fixed; 
+    width: 100%;
+    height:100%;
+    background-image: url("19183-NS5D2M.svg");
+    background-repeat: repeat;
+  }
+
+.grid-container {
+    /* background-color: ghostwhite; */
+    display: grid;
+    align-items: center;
+    grid-gap: 10px 10px;
+    height:47.95vh;
+    padding:1vh;
+    border-bottom: 0.1vh lightblue dashed;
+    border-left: 0.1vh lightblue dashed;
+    
+}
+.grid-container:last-child
+{
+    border-bottom: none;
+}
+
+.grid-item {
+    padding: 20px 10px;
+    max-height:5vh;
+    overflow-wrap: break-word;
+    text-align: center;
+    font-size: small;
+    border: 0.5em solid honeydew;
+}
+
+nav {
+    float: left;
+    padding:1vh 0vh;
+    width: 100px;
+    background-color: ghostwhite;
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scrolling if the sidenav has too much content */
+}
+
+nav li {
+    width: 100px;
+    height: 100px;
+    display: block;
+    background-color: ghostwhite;
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    
+}
+
+nav li#settings
+{
+    background-image: url("icons/settings.svg")
+}
+nav li#settings:hover
+{
+    background-color: skyblue;
+}
+
+nav li#soundboard
+{
+    background-image: url("icons/play-circle.svg")
+}
+nav li#soundboard:hover
+{
+    background-color: seagreen;
+}
+
+nav li#mute
+{
+    background-image: url("icons/volume-x.svg")
+}
+nav li#mute:hover
+{
+    background-color:lightcoral;
+}
+
+select {
+    font-size:xx-large;
+    width: 50%;
+    min-width: 300px;
+    text-align: center;
+    margin: 0 auto;
+}
