@@ -7,7 +7,7 @@
     },
     {
       "name": "two",
-      "file": "assets/sounds/wildhelm_scream.ogg",
+      "file": "assets/sounds/sound.mp3",
       "category": "Fun"
     },
     {
@@ -54,7 +54,7 @@
     },
     {
       "name": "two",
-      "file": "assets/sounds/wildhelm_scream.ogg"
+      "file": "assets/sounds/sound.mp3"
     },
     {
       "name": "three",
@@ -94,7 +94,7 @@
     },
     {
       "name": "two",
-      "file": "assets/sounds/wildhelm_scream.ogg"
+      "file": "assets/sounds/sound.mp3"
     },
     {
       "name": "three",
@@ -134,7 +134,7 @@
     },
     {
       "name": "two",
-      "file": "assets/sounds/wildhelm_scream.ogg"
+      "file": "assets/sounds/sound.mp3"
     },
     {
       "name": "three",
