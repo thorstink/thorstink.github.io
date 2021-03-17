@@ -1,0 +1,143 @@
+<svg class="marks" width="717" height="132" viewBox="0 0 717 132" version="1.1"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g transform="translate(52,5)">
+        <g class="mark-group role-frame root">
+            <g transform="translate(0,0)">
+                <path class="background" d="M0.5,0.5h600v105h-600Z" style="fill: none; stroke: #ddd;"></path>
+                <g>
+                    <g class="mark-group role-axis">
+                        <g transform="translate(0.5,105.5)">
+                            <path class="background" d="M0,0h0v0h0Z" style="pointer-events: none; fill: none;"></path>
+                            <g>
+                                <g class="mark-rule role-axis-grid" style="pointer-events: none;">
+                                    <line transform="translate(92,0)" x2="0" y2="-105" style="fill: none; stroke: #ddd; stroke-width: 1; opacity: 1;"></line>
+                                    <line transform="translate(185,0)" x2="0" y2="-105" style="fill: none; stroke: #ddd; stroke-width: 1; opacity: 1;"></line>
+                                    <line transform="translate(0,0)" x2="0" y2="-105" style="fill: none; stroke: #ddd; stroke-width: 1; opacity: 1;"></line>
+                                    <line transform="translate(277,0)" x2="0" y2="-105" style="fill: none; stroke: #ddd; stroke-width: 1; opacity: 1;"></line>
+                                    <line transform="translate(369,0)" x2="0" y2="-105" style="fill: none; stroke: #ddd; stroke-width: 1; opacity: 1;"></line>
+                                    <line transform="translate(46,0)" x2="0" y2="-105" style="fill: none; stroke: #ddd; stroke-width: 1; opacity: 1;"></line>
+                                    <line transform="translate(138,0)" x2="0" y2="-105" style="fill: none; stroke: #ddd; stroke-width: 1; opacity: 1;"></line>
+                                    <line transform="translate(231,0)" x2="0" y2="-105" style="fill: none; stroke: #ddd; stroke-width: 1; opacity: 1;"></line>
+                                    <line transform="translate(323,0)" x2="0" y2="-105" style="fill: none; stroke: #ddd; stroke-width: 1; opacity: 1;"></line>
+                                    <line transform="translate(415,0)" x2="0" y2="-105" style="fill: none; stroke: #ddd; stroke-width: 1; opacity: 1;"></line>
+                                    <line transform="translate(462,0)" x2="0" y2="-105" style="fill: none; stroke: #ddd; stroke-width: 1; opacity: 1;"></line>
+                                    <line transform="translate(508,0)" x2="0" y2="-105" style="fill: none; stroke: #ddd; stroke-width: 1; opacity: 1;"></line>
+                                    <line transform="translate(554,0)" x2="0" y2="-105" style="fill: none; stroke: #ddd; stroke-width: 1; opacity: 1;"></line>
+                                    <line transform="translate(600,0)" x2="0" y2="-105" style="fill: none; stroke: #ddd; stroke-width: 1; opacity: 1;"></line>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                    <g class="mark-rect role-mark marks">
+                        <path d="M33.693680953846155,22.049999999999997h101.54240556923077v18.900000000000002h-101.54240556923077Z" style="fill: #4c78a8;"></path>
+                        <path d="M135.23802655384614,1.0499999999999972h9.231586523076942v18.900000000000002h-9.231586523076942Z" style="fill: #4c78a8;"></path>
+                        <path d="M144.47138833846154,22.049999999999997h101.53903633846153v18.900000000000002h-101.53903633846153Z" style="fill: #4c78a8;"></path>
+                        <path d="M246.01202003076924,1.0499999999999972h9.231514338461551v18.900000000000002h-9.231514338461551Z" style="fill: #4c78a8;"></path>
+                        <path d="M255.2450048307692,22.049999999999997h101.53909624615389v18.900000000000002h-101.53909624615389Z" style="fill: #4c78a8;"></path>
+                        <path d="M356.78563938461537,1.0499999999999972h9.231506584615374v18.900000000000002h-9.231506584615374Z" style="fill: #4c78a8;"></path>
+                        <path d="M366.0184630153846,22.049999999999997h101.53924735384612v18.900000000000002h-101.53924735384612Z" style="fill: #4c78a8;"></path>
+                        <path d="M467.5596334153846,1.0499999999999972h9.231758215384616v18.900000000000002h-9.231758215384616Z" style="fill: #4c78a8;"></path>
+                        <path d="M476.79289283076923,22.049999999999997h101.53920092307692v18.900000000000002h-101.53920092307692Z" style="fill: #4c78a8;"></path>
+                        <path d="M578.3336328923077,1.0499999999999972h9.231479261538425v18.900000000000002h-9.231479261538425Z" style="fill: #4c78a8;"></path>
+                    </g>
+                    <g class="mark-group role-legend">
+                        <g transform="translate(618,0)">
+                            <path class="background" d="M0,0h146v27h-146Z" style="pointer-events: none; fill: none;"></path>
+                            <g>
+                                <g class="mark-group role-legend-entry">
+                                    <g transform="translate(0,16)">
+                                        <path class="background" d="M0,0h0v0h0Z" style="pointer-events: none; fill: none;"></path>
+                                        <g>
+                                            <g class="mark-symbol role-legend-symbol" style="pointer-events: none;">
+                                                <path transform="translate(5,5)" d="M-5,-5h10v10h-10Z" style="fill: #4c78a8; stroke-width: 1.5; opacity: 1;"></path>
+                                            </g>
+                                            <g class="mark-text role-legend-label" style="pointer-events: none;">
+                                                <text text-anchor="start" transform="translate(18,8)" style="font: 10px sans-serif; fill: #000; opacity: 1;">14277186979880913000</text>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </g>
+                                <g class="mark-text role-legend-title" style="pointer-events: none;">
+                                    <text text-anchor="start" transform="translate(0,9)" style="font: bold 11px sans-serif; fill: #000; opacity: 1;">thread</text>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                    <g class="mark-group role-axis">
+                        <g transform="translate(0.5,105.5)">
+                            <path class="background" d="M0,0h0v0h0Z" style="pointer-events: none; fill: none;"></path>
+                            <g>
+                                <g class="mark-rule role-axis-tick" style="pointer-events: none;">
+                                    <line transform="translate(92,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line>
+                                    <line transform="translate(185,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line>
+                                    <line transform="translate(0,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line>
+                                    <line transform="translate(277,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line>
+                                    <line transform="translate(369,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line>
+                                    <line transform="translate(46,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line>
+                                    <line transform="translate(138,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line>
+                                    <line transform="translate(231,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line>
+                                    <line transform="translate(323,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line>
+                                    <line transform="translate(415,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line>
+                                    <line transform="translate(462,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line>
+                                    <line transform="translate(508,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line>
+                                    <line transform="translate(554,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line>
+                                    <line transform="translate(600,0)" x2="0" y2="5" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line>
+                                </g>
+                                <g class="mark-text role-axis-label" style="pointer-events: none;">
+                                    <text text-anchor="middle" transform="translate(92.3076923076923,15)" style="font: 10px sans-serif; fill: #000; opacity: 0;">4,355,000,000,000</text>
+                                    <text text-anchor="middle" transform="translate(184.6153846153846,15)" style="font: 10px sans-serif; fill: #000; opacity: 1;">4,356,000,000,000</text>
+                                    <text text-anchor="start" transform="translate(0,15)" style="font: 10px sans-serif; fill: #000; opacity: 1;">4,354,000,000,000</text>
+                                    <text text-anchor="middle" transform="translate(276.92307692307696,15)" style="font: 10px sans-serif; fill: #000; opacity: 0;">4,357,000,000,000</text>
+                                    <text text-anchor="middle" transform="translate(369.2307692307692,15)" style="font: 10px sans-serif; fill: #000; opacity: 1;">4,358,000,000,000</text>
+                                    <text text-anchor="middle" transform="translate(46.15384615384615,15)" style="font: 10px sans-serif; fill: #000; opacity: 0;">4,354,500,000,000</text>
+                                    <text text-anchor="middle" transform="translate(138.46153846153848,15)" style="font: 10px sans-serif; fill: #000; opacity: 0;">4,355,500,000,000</text>
+                                    <text text-anchor="middle" transform="translate(230.76923076923077,15)" style="font: 10px sans-serif; fill: #000; opacity: 0;">4,356,500,000,000</text>
+                                    <text text-anchor="middle" transform="translate(323.07692307692304,15)" style="font: 10px sans-serif; fill: #000; opacity: 0;">4,357,500,000,000</text>
+                                    <text text-anchor="middle" transform="translate(415.38461538461536,15)" style="font: 10px sans-serif; fill: #000; opacity: 0;">4,358,500,000,000</text>
+                                    <text text-anchor="middle" transform="translate(461.53846153846155,15)" style="font: 10px sans-serif; fill: #000; opacity: 0;">4,359,000,000,000</text>
+                                    <text text-anchor="middle" transform="translate(507.6923076923077,15)" style="font: 10px sans-serif; fill: #000; opacity: 0;">4,359,500,000,000</text>
+                                    <text text-anchor="middle" transform="translate(553.8461538461539,15)" style="font: 10px sans-serif; fill: #000; opacity: 1;">4,360,000,000,000</text>
+                                    <text text-anchor="end" transform="translate(600,15)" style="font: 10px sans-serif; fill: #000; opacity: 0;">4,360,500,000,000</text>
+                                </g>
+                                <g class="mark-rule role-axis-domain" style="pointer-events: none;">
+                                    <line transform="translate(0,0)" x2="600" y2="0" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line>
+                                </g>
+                                <g class="mark-text role-axis-title" style="pointer-events: none;">
+                                    <text text-anchor="middle" transform="translate(300,31)" style="font: bold 11px sans-serif; fill: #000; opacity: 1;">start, end</text>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                    <g class="mark-group role-axis">
+                        <g transform="translate(0.5,0.5)">
+                            <path class="background" d="M0,0h0v0h0Z" style="pointer-events: none; fill: none;"></path>
+                            <g>
+                                <g class="mark-rule role-axis-tick" style="pointer-events: none;">
+                                    <line transform="translate(0,9)" x2="-5" y2="0" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line>
+                                    <line transform="translate(0,31)" x2="-5" y2="0" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line>
+                                    <line transform="translate(0,52)" x2="-5" y2="0" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line>
+                                    <line transform="translate(0,73)" x2="-5" y2="0" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line>
+                                    <line transform="translate(0,94)" x2="-5" y2="0" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line>
+                                </g>
+                                <g class="mark-text role-axis-label" style="pointer-events: none;">
+                                    <text text-anchor="end" transform="translate(-7,12.499999999999998)" style="font: 10px sans-serif; fill: #000; opacity: 1;">0</text>
+                                    <text text-anchor="end" transform="translate(-7,33.5)" style="font: 10px sans-serif; fill: #000; opacity: 1;">1</text>
+                                    <text text-anchor="end" transform="translate(-7,54.5)" style="font: 10px sans-serif; fill: #000; opacity: 1;">2</text>
+                                    <text text-anchor="end" transform="translate(-7,75.5)" style="font: 10px sans-serif; fill: #000; opacity: 1;">3</text>
+                                    <text text-anchor="end" transform="translate(-7,96.5)" style="font: 10px sans-serif; fill: #000; opacity: 1;">4</text>
+                                </g>
+                                <g class="mark-rule role-axis-domain" style="pointer-events: none;">
+                                    <line transform="translate(0,0)" x2="0" y2="105" style="fill: none; stroke: #888; stroke-width: 1; opacity: 1;"></line>
+                                </g>
+                                <g class="mark-text role-axis-title" style="pointer-events: none;">
+                                    <text text-anchor="middle" transform="translate(-34,52.5) rotate(-90) translate(0,-2)" style="font: bold 11px sans-serif; fill: #000; opacity: 1;">task</text>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

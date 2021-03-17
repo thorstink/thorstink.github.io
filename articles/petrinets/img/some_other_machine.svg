@@ -1,0 +1,84 @@
+<svg height="550" version="1.1" width="600"
+    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="overflow: hidden; position: relative;">
+    <desc>Created with Raphaël 2.1.0</desc>
+    <defs>
+        <path stroke-linecap="round" d="M5,0 0,2.5 5,5z" id="raphael-marker-block"></path>
+        <marker id="raphael-marker-endblock55" markerHeight="5" markerWidth="5" orient="auto" refX="2.5" refY="2.5">
+            <use xlink:href="#raphael-marker-block" transform="rotate(180 2.5 2.5) scale(1,1)" stroke-width="1.0000" fill="brown" stroke="none"></use>
+        </marker>
+    </defs>
+    <circle cx="50" cy="200" r="25" fill="#ffa500" stroke="#a52a2a" style="" stroke-width="2"></circle>
+    <text style="text-anchor: middle; font: 14px Courier New;" x="50" y="165" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#0000ff" font-size="14px" font-family="Courier New">
+        <tspan dy="3.75">P1</tspan>
+    </text>
+    <circle cx="50" cy="400" r="25" fill="#ffa500" stroke="#a52a2a" style="" stroke-width="2"></circle>
+    <text style="text-anchor: middle; font: 14px Courier New;" x="50" y="365" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#0000ff" font-size="14px" font-family="Courier New">
+        <tspan dy="3.75">P4</tspan>
+    </text>
+    <circle cx="300" cy="400" r="25" fill="#ffa500" stroke="#a52a2a" style="" stroke-width="2"></circle>
+    <text style="text-anchor: middle; font: 14px Courier New;" x="300" y="365" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#0000ff" font-size="14px" font-family="Courier New">
+        <tspan dy="3.75">P5</tspan>
+    </text>
+    <circle cx="550" cy="500" r="25" fill="#ffa500" stroke="#a52a2a" style="" stroke-width="2"></circle>
+    <text style="text-anchor: middle; font: 14px Courier New;" x="550" y="465" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#0000ff" font-size="14px" font-family="Courier New">
+        <tspan dy="3.75">P7</tspan>
+    </text>
+    <circle cx="300" cy="200" r="25" fill="#ffa500" stroke="#a52a2a" style="" stroke-width="2"></circle>
+    <text style="text-anchor: middle; font: 14px Courier New;" x="300" y="165" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#0000ff" font-size="14px" font-family="Courier New">
+        <tspan dy="3.75">P2</tspan>
+    </text>
+    <circle cx="550" cy="400" r="25" fill="#ffa500" stroke="#a52a2a" style="" stroke-width="2"></circle>
+    <text style="text-anchor: middle; font: 14px Courier New;" x="550" y="365" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#0000ff" font-size="14px" font-family="Courier New">
+        <tspan dy="3.75">P6</tspan>
+    </text>
+    <circle cx="550" cy="400" r="4" fill="#000000" stroke="#000000" style="" stroke-width="0"></circle>
+    <circle cx="550" cy="200" r="25" fill="#ffa500" stroke="#a52a2a" style="" stroke-width="2"></circle>
+    <text style="text-anchor: middle; font: 14px Courier New;" x="550" y="165" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#0000ff" font-size="14px" font-family="Courier New">
+        <tspan dy="3.75">P3</tspan>
+    </text>
+    <circle cx="550" cy="200" r="4" fill="#000000" stroke="#000000" style="" stroke-width="0"></circle>
+    <circle cx="50" cy="50" r="25" fill="#ffa500" stroke="#a52a2a" style="" stroke-width="2"></circle>
+    <text style="text-anchor: middle; font: 14px Courier New;" x="50" y="15" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#0000ff" font-size="14px" font-family="Courier New">
+        <tspan dy="3.75">P0</tspan>
+    </text>
+    <circle cx="40" cy="45" r="4" fill="#000000" stroke="#000000" style="" stroke-width="0"></circle>
+    <circle cx="50" cy="45" r="4" fill="#000000" stroke="#000000" style="" stroke-width="0"></circle>
+    <circle cx="60" cy="45" r="4" fill="#000000" stroke="#000000" style="" stroke-width="0"></circle>
+    <circle cx="40" cy="55" r="4" fill="#000000" stroke="#000000" style="" stroke-width="0"></circle>
+    <circle cx="50" cy="55" r="4" fill="#000000" stroke="#000000" style="" stroke-width="0"></circle>
+    <circle cx="60" cy="55" r="4" fill="#000000" stroke="#000000" style="" stroke-width="0"></circle>
+    <rect x="295" y="25" width="10" height="50" r="0" rx="0" ry="0" fill="#008000" stroke="#a52a2a" style="" stroke-width="2"></rect>
+    <text style="text-anchor: middle; font: 14px Courier New;" x="300" y="15" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#0000ff" font-size="14px" font-family="Courier New">
+        <tspan dy="3.75">T0</tspan>
+    </text>
+    <rect x="170" y="175" width="10" height="50" r="0" rx="0" ry="0" fill="#008000" stroke="#a52a2a" style="" stroke-width="2"></rect>
+    <text style="text-anchor: middle; font: 14px Courier New;" x="175" y="165" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#0000ff" font-size="14px" font-family="Courier New">
+        <tspan dy="3.75">T1</tspan>
+    </text>
+    <rect x="420" y="175" width="10" height="50" r="0" rx="0" ry="0" fill="#008000" stroke="#a52a2a" style="" stroke-width="2"></rect>
+    <text style="text-anchor: middle; font: 14px Courier New;" x="425" y="165" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#0000ff" font-size="14px" font-family="Courier New">
+        <tspan dy="3.75">T2</tspan>
+    </text>
+    <rect x="170" y="375" width="10" height="50" r="0" rx="0" ry="0" fill="#008000" stroke="#a52a2a" style="" stroke-width="2"></rect>
+    <text style="text-anchor: middle; font: 14px Courier New;" x="175" y="365" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#0000ff" font-size="14px" font-family="Courier New">
+        <tspan dy="3.75">T3</tspan>
+    </text>
+    <rect x="420" y="375" width="10" height="50" r="0" rx="0" ry="0" fill="#008000" stroke="#a52a2a" style="" stroke-width="2"></rect>
+    <text style="text-anchor: middle; font: 14px Courier New;" x="425" y="365" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#0000ff" font-size="14px" font-family="Courier New">
+        <tspan dy="3.75">T4</tspan>
+    </text>
+    <path style="" fill="none" stroke="#a52a2a" d="M77,200C77,200,122.25160193443298,200,140.5024921677541,200" stroke-width="3" marker-end="url(#raphael-marker-endblock55)"></path>
+    <path style="" fill="none" stroke="#a52a2a" d="M202,200C202,200,247.25160193443298,200,265.5024921677541,200" stroke-width="3" marker-end="url(#raphael-marker-endblock55)"></path>
+    <path style="" fill="none" stroke="#a52a2a" d="M327,200C327,200,372.251601934433,200,390.5024921677541,200" stroke-width="3" marker-end="url(#raphael-marker-endblock55)"></path>
+    <path style="" fill="none" stroke="#a52a2a" d="M452,200C452,200,497.251601934433,200,515.5024921677541,200" stroke-width="3" marker-end="url(#raphael-marker-endblock55)"></path>
+    <path style="" fill="none" stroke="#a52a2a" d="M77,400C77,400,122.25160193443298,400,140.5024921677541,400" stroke-width="3" marker-end="url(#raphael-marker-endblock55)"></path>
+    <path style="" fill="none" stroke="#a52a2a" d="M202,400C202,400,247.25160193443298,400,265.5024921677541,400" stroke-width="3" marker-end="url(#raphael-marker-endblock55)"></path>
+    <path style="" fill="none" stroke="#a52a2a" d="M327,400C327,400,372.251601934433,400,390.5024921677541,400" stroke-width="3" marker-end="url(#raphael-marker-endblock55)"></path>
+    <path style="" fill="none" stroke="#a52a2a" d="M452,400C452,400,497.251601934433,400,515.5024921677541,400" stroke-width="3" marker-end="url(#raphael-marker-endblock55)"></path>
+    <path style="" fill="none" stroke="#a52a2a" d="M276.8476910057613,63.8913853965432C276.8476910057613,63.8913853965432,114.2091543573953,161.47450738556282,79.58493464123927,182.24903921525646" stroke-width="3" marker-end="url(#raphael-marker-endblock55)"></path>
+    <path style="" fill="none" stroke="#a52a2a" d="M401.1764705882353,212.7058823529412C401.1764705882353,212.70588235294116,126.79240500225745,359.0440506654627,80.43650329681387,383.76719824169925" stroke-width="3" marker-end="url(#raphael-marker-endblock55)"></path>
+    <path style="" fill="none" stroke="#a52a2a" d="M77,50C77,50,229.58522129058838,50,265.4963915357366,50" stroke-width="3" marker-end="url(#raphael-marker-endblock55)"></path>
+    <path style="" fill="none" stroke="#a52a2a" d="M526.1764705882354,387.2941176470588C526.1764705882354,387.2941176470588,251.79240500225734,240.9559493345373,205.43650329681387,216.23280175830075" stroke-width="3" marker-end="url(#raphael-marker-endblock55)"></path>
+    <path style="" fill="none" stroke="#a52a2a" d="M446.0834578549618,416.86676628396947C446.0834578549618,416.86676628396947,504.16955231570665,463.3356418525653,523.0588779557731,478.44710236461844" stroke-width="3" marker-end="url(#raphael-marker-endblock55)"></path>
+    <path style="" fill="none" stroke="#a52a2a" d="M526.8476910057614,186.1086146034568C526.8476910057614,186.10861460345683,364.2091543573953,88.52549261443716,329.5849346412393,67.75096078474354" stroke-width="3" marker-end="url(#raphael-marker-endblock55)"></path>
+</svg>

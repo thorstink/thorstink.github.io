@@ -1,0 +1,350 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+  <meta charset=utf-8>
+  <title>Overview</title>
+</head>
+<style>
+  img {
+    display: block;
+    max-width: 80%;
+    max-height: 15em;
+    margin-left: auto;
+    margin-right: auto;
+  }
+</style>
+<link rel="stylesheet" href="highlight/styles/stackoverflow-light.css">
+<script src="highlight/highlight.pack.js"></script>
+
+<script>window.texme = { renderOnLoad: false }</script>
+<script src="https://cdn.jsdelivr.net/npm/texme@0.9.0"></script>
+<script>
+window.onload = function () {
+    texme.renderPage()
+    hljs.highlightAll();
+}
+
+</script>
+
+
+
+<body>
+  <textarea>
+# Generating programs from Petri nets
+
+In the past weeks I have experimented with [Petri nets](https://en.wikipedia.org/wiki/Petri_net) and I want to share my learnings. More specifically I will share my experiment where I turn a Petri net into a (c++) program. I think you do not need to be thoroughly acquainted with Petri nets to follow this post, as neither am I, but a basic understanding is needed as it will not be covered here. Some particular (c++)-programming knowledge is required to understand the implementation.
+
+Petri nets are interesting as they can be used to create a coordination: what should happen in which order. Petri nets have a lot in common with finite state machines, as both are visualizable models, but are better suited for modelling concurrent and/or parallel systems. This post's content is inspired by some of [Herman Bruyninckx's](https://robmosys.pages.gitlab.kuleuven.be/) ideas on composable cyber-physical systems in conjunction with my own not-always-fruitful attempts at creating software for robots. I will use the [cookie vending machine](https://duckduckgo.com/?q=cookie+vending+machine&t=canonical&iar=images&iax=images&ia=images) example that Jörgen Brandt used in his Erlang-flavoured presentation: [Beyond state machines: services as Petri nets](https://www.youtube.com/watch?v=aWnGPaputGE).
+
+The structure of this post is as follows: first I will introduce the Petri net for the cookie vending machine and a small online tool that will allow you to visualize and simulate its behavior. Then we construct the [incidence matrix](https://en.wikipedia.org/wiki/Incidence_matrix) from the Petri net and use that to calculate the _marking mutations_ that accompany transitions ([sort of pre- and post conditions](http://faculty.kutztown.edu/spiegel/Documentation/InvariantsPrePostConditions.pdf)). Now we have two sets of unordered (marking-mutation, transition) pairs: a _pre-transition-marking-mutation_-set and the _post-transition-marking-mutation_-set, I will elaborate on this later. But equipped with these two sets and some (simple) pattern matching on the _marking_, we can find the fireable transitions and use the mutations that are associated with the transitions to mutate the marking - executing the program's flow.
+
+Be advised that this post is not (formally) reviewed and the accompanying implementation _is not_ something that I would advise to be used  outside an experimentation context. The implementation that I shared uses the [RxCpp-library](https://github.com/ReactiveX/RxCpp) to implement a [uni-directional dataflow](https://www.exclamationlabs.com/blog/the-case-for-unidirectional-data-flow/). Further more it depends on [Eigen](eigen.tuxfamily.org/) and [Seasocks](https://github.com/mattgodbolt/seasocks) (a small websocket library) that lets us push data to the browser to visualize things. There's a Docker I put up here, which you can run and experiment with locally.
+
+### Petri net flavours
+There are various extensions on Petri nets that extend the _basic_ Petri net. When working with a particular flavour of Petri nets, it is important to figure out if the extensions violate or change the formalisms that you might rely on.
+
+In this post we will work with _[ decision free](https://www7.in.tum.de/~esparza/fcbook-middle.pdf)_ Petri nets. Decision free Petri nets are nets in which each _place_ has only _one_ input transition and _one_ output transition (there's a better and more accurate definition in the above link). This might feel like a hefty constraint in expressiveness but essentially it boils down to that we are limiting ourself to synchronization- and not concurrent problems.
+
+## The cookie vending machine
+
+### Tiny tool intermezzo
+There are quite some tools for inspecting, creating, simulating and maybe even generating programs from Petri nets. Many of them automate the analysis that you can do on a net: boundedness, liveness and much more. Since this post is not about that and I value experimentation with little effort, we can use this [online Petri-net editor and simulator](http://petri.hp102.ru/pnet.html). I encourage you to toy around there. Especially example number 5 is mesmerizing.
+
+### The cookie vending machine Petri net
+[This json](../../nets/coin_machine_v2.json) describes the cookie vending machine. You can download the json and open it in [the petri-net editor](http://petri.hp102.ru/pnet.html). The json also includes some visualization meta-data, but the important parts are the labels, and in particular the fourth element in the `places` list is the amount of tokens that are in a particular place. `"P2,350,50,3"` reads `P2` has 3 tokens. The net should look like the following (do not be confused, I edited the positions of the labels manually in the picture to improve readability):
+\begin{md}
+![Screenshot ][vending_machine_stand_alone]
+\end{md}
+If you now run the net (by pushing the red 'Run'-button) you will notice that nothing happens. That is logical because $T_0$ requires a token to be present in $ P_1 $ and $T_1$ needs a token to be present in $P_0$. If we select $P_0$ and push the green `+`, we will put a token in $P_0$ and you will see that the net starts _flowing_. As you can see, the initial marking,
+$$M_0 = (P_0, P_1, P_2, P_3, P_4)^\intercal = (0,0,3,0,0)^\intercal$$
+has a rather large influence on the behavior of the system. It reminded me about the [_butterfly effect_](https://en.wikipedia.org/wiki/Butterfly_effect). 
+
+To give this net a semantic meaning, making it a cookie vending machine, we should interpret $P_0$ as the coin-slot and if it caries a token somebody or something put a coin into it. That fires the transition $T_1$, which deposits the coin into a safe place ($P_4$) and triggers the next transition, $T_0$ by placing a token in $P_1$. $T_0$ means retrieving a cookie from the cookie-supply ($P_2$) and putting it in the machines output-tray ($P_3$).  
+
+## Graphs can be represented by matrices
+There's a tight relation between graphs and matrices. Apparently, [every matrix can be seen as a weighted bipartite graph](https://www.math3ma.com/blog/matrices-probability-graphs). We are interested in a particular matrix-representation of our Petri net: the [incidence matrix](https://en.wikipedia.org/wiki/Incidence_matrix), which we will refer to as $D$. With $D$ we simplify marking manipulation to algebraic manipulations. With the incidence matrix $D$, the current marking vector $M_{t}$ and fire transition-vector $T$, we can calculate the next marking as follows:   
+$$
+M_{t+1} = M_{t} + DT
+$$
+The incidence matrix $D$, in context of Petri nets, can be constructed by subtracting the input matrix, $D^-$, from the output matrix $D^+$, so $D=D^+ - D^-$. [This page gives a clean example](https://www.techfak.uni-bielefeld.de/~mchen/BioPNML/Intro/MRPN.html). Note that I prefer to view the $M$ and $T$ vectors as a vertical (opposed to horizontal in the example I linked to). I tend to view matrix  $D$ (or $D^+$ or $D^-$ individually) as a function that maps a transition to a marking-mutation.
+
+### Description of the transition vector $T$
+The size and value of $T$ is straightforward. If we have $n$ transitions, we can create an ordered set $\{T_0, T_1, \dots, T_{n-1}\}$, where the dimension of each vector $T_i$ is $n$ and all elements of the vector are zero except for the $i-1$th element (0-indexing!), which is one. We could add the zero-vector to denote the event that no transitions are fired: $T_{\pmb{0}} = (0,0)^\intercal$
+
+So the transition vector associated with $T_0$ is $\begin{pmatrix} 1, 0 \end{pmatrix}^\intercal$ and $T_1$ is $\begin{pmatrix} 0, 1 \end{pmatrix}^\intercal$. 
+
+Note that it is possible to compose transitions: $T_0+T_1 = (1,1)^\intercal$. This is also done [here](https://www.techfak.uni-bielefeld.de/~mchen/BioPNML/Intro/MRPN.html).
+
+### Constructing $D^+$ and $D^-$ for the cookie vending machine
+Our cookie vending machine has two transitions  $\{T_0, T_1\}$ and five places $\{P_0, P_1, P_2, P_3, P_4\}$. We mark the entry $D^-(i,j)$ with value $1$ if transition $T_i$ has an input from $P_j$. We mark the entry $D^+(i, j)$ with value $1$ if transition $T_i$ outputs to $P_j$. In our example, we have a $4\times2$ matrix: a row for each place and a column for every transition:
+$$
+D^- = 
+\begin{pmatrix}
+0 & 1\\
+1 & 0\\
+1 & 0\\
+0 & 0\\
+0 & 0\\
+\end{pmatrix}, 
+D^+ = 
+\begin{pmatrix}
+0 & 0\\
+0 & 1\\
+0 & 0\\
+1 & 0\\
+0 & 1\\
+\end{pmatrix}, D= D^+-D^- = \begin{pmatrix}
+0 & -1\\
+-1 & 1\\
+-1 & 0\\
+1 & 0\\
+0 & 1\\
+\end{pmatrix}
+$$
+Lets verify if this makes sense. Lets assume $M_0= (0,0,3,0,0)^\intercal$. No transitions are fireable, hence $T= (0,0)^\intercal$. We would expect an inert system, as we saw in the Petri net simulator. 
+$$
+M_1 = M_0 + D \begin{pmatrix} 
+0\\
+0\\
+\end{pmatrix}= M_0
+$$
+It is a bit trivial, but okay. Lets try put a coin into $P_0$, so $M_0 = (1,0,3,0,0)^\intercal$, this enables $T_1$:
+$$
+M_1 = M_0 + D \begin{pmatrix} 
+0\\
+1\\
+\end{pmatrix}= (0,1,2,0,1)^\intercal
+$$
+Since there is a token in $P_1$, $T_0$ is enabled:
+$$
+M_2 = M_1 + D \begin{pmatrix} 
+1\\
+0\\
+\end{pmatrix}= \begin{pmatrix}0,0,2,1,1\end{pmatrix}^\intercal
+$$
+There is a coin in the safe place and a cookie in the output-tray! Also the coin slot is empty the cookie-supply took a hit of one cookie.
+
+### Instantaneous mutation
+Multiplying by $D$ is the equivalent of starting a task (removing the input tokens) _and_ finishing it (putting tokens into the output places). In reality the task or action associated with transition $T_i$ takes a bit of time. Not only because a task takes time, but there is also software plumbing time.
+
+It makes sense to view mutations by $D^-$ and $D^+$ as [separate updates](https://www.uni-ulm.de/fileadmin/website_uni_ulm/iui.inst.170/home/betz/betz_petri_nets_chr07.pdf) So, in an improvised notation, where the left always finishes before proceeding to the next arrow:
+$$
+M_0 - D^- T_i \rightarrow M_1 \rightarrow \ldots \rightarrow M_{1+t} + D^+ T_i \rightarrow M_{2+t}  
+$$
+you should read this as: update the marking by removing the input tokens, then execute the associated task, then once the task is finished (after the $\ldots$), update the marking by placing the tokens in the output places. 
+
+Note that output-update happens on $M_{1+t}$, which is not necessary $M_1$. Other updates could happen in between. In our case this is not a problem, because we are working with a decision free Petri net:   the only transition _that particular_ output place $P$ can get a token from is $T_i$. This is because all our places have only one input-and one output-transition. 
+
+Final remark on this paragraph: I have not experimented and (thoroughly) read about _timed_ Petri nets _yet_ and that might change how I understand this :-).
+
+## Mapping the Petri net to a program
+In our example, the Petri net is an abstract representation of a program. Earlier we described _what_ it semantically implies if particular places contain a token (or not) and what should happen if a particular transition is fired (e.g. put a cookie in the output tray). 
+
+*Important note*: I simplified the code snippets to look clean in text. For the real code, take a look at the [repository]().
+
+### Three little [unordered maps](https://en.cppreference.com/w/cpp/container/unordered_map)
+If we want to map a Petri net to a computer program, we need to assign each transition to an _effect_ (some function). We will use a simple implementation consisting of three unordered maps. Two of these maps are a mapping of transitions (identifiable by a unique positive integer $i$) to their respective input-, $\Delta M_i^- = -D^- T_i$, and output, $\Delta M_i^+ = D^+ T_i$, marking mutations. The third map is a mapping of a transition $T_i$ to an effect. 
+
+In code, for the mutation-mappings we have:
+```
+using Transition = int;
+using Marking = Eigen::VectorXi;
+using Mutation = Eigen::VectorXi;
+using TransitionMutation = std::unordered_map<Transition, Mutation>>;
+```
+`Eigen::VectorXi` always has a size equal to the amount of places in the Petri Net. For the mapping to effects we have:
+```cpp
+using Effect = std::function<void()>;
+using TransitionEffectMap = std::unordered_map<Transition, Effect>;
+```
+In essence we are free to do anything in the `Effect` function. It looks a bit silly because we do not take inputs and also do not output anything, but remember the effects themselves do not need to be concerned whether it 'is their time to run yet'. Also, this does not mean effects are not able to communicate or are able to leave side-effects. They just can not _influence_ the scheduling.
+
+### Determining fireable transitions
+The marking-vector $M_t$ can be seen as the application state at time $t$ and it can be mutated by composing the predefined mutations that are associated with the possible transitions. Transitions should fire whenever they can, and in our non-timed Petri nets that is whenever its input-place (or places) contain a token. This condiation can be checked by verifying that $M_{t+1} = M_t + \Delta M^-$ contains no negative elements. 
+
+We will create a function that takes a `Model` and returns a pair of the updated `Model` (where the input tokens from the firing transitions has been deducted) and a list of transitions that have been fired.
+
+Note that the `Model` struct here is a composition of the current Marking $M$ and the two transition-mutation mappings (`Dm` and `Dp`):
+```cpp
+struct Model {
+  mutable Marking M;
+  const TransitionMutation Dm;
+  const TransitionMutation Dp;
+}
+```
+
+```cpp
+using Transitions = std::vector<Transition>;
+
+std::pair<Model, Transitions> run(Model model) {
+  auto &M = model.M;
+  auto &Dm = model.Dm;
+  Transitions T;
+
+  for (const auto &[T_i, dM_i] : Dm) {
+    if (((M - dM_i).array() >= 0).all()) {
+      M -= dM_i;
+      T.push_back(T_i);
+    }
+  }
+
+  return {model, T};
+}
+
+```
+We are looping over all transitions and calculating the hypothetical Marking if we would deduct $\Delta M^-$. An optimization could be calculating reaction tables offline or use [memoization](https://en.wikipedia.org/wiki/Memoization) to the function. This only makes sense only if the set of markings is limited to a reasonable number, so in general that means programs with cycles and avoid having a sink place that accumulates tokens (because that would render every marking unique). 
+
+### Results of effects
+Earlier I mentioned that `Effect` is _any_ function that takes no arguments and does not return anything. In order to progress, we need to communicate if the `Effect` returned (indicating success). Because only once the `Effect` associated with a transition $T_i$ is finished, we can complete the firing contract and update the Marking by composing $\Delta M^+_i$ onto $M_t$. We do this by wrapping the `Effect` call in an [_observable_](http://reactivex.io/documentation/observable.html) (this might become hazy if you are unknown to ['Rx'](http://reactivex.io/)) and then mapping it to `Reducer` ([a fold](https://en.wikipedia.org/wiki/Fold_(higher-order_function))) which updates the `Model`:
+```cpp
+auto executeTransition(TransitionEffectMap transition_effect_map) {
+  [transition_effect_map](const Transition &transition) {
+    return observable<>::just(transition) |
+           map([](const Transition &transition) {
+             // the map returns a function, the '()' calls it.
+             transition_effect_map.at(transition)();
+             return Reducer([=](Model model) {
+               model.M += model.Dp.at(transition);
+               return model;
+             });
+           });
+    };
+  }
+```
+
+Wrapping the reducers into an observable becomes convenient because now we can [merge](http://reactivex.io/documentation/operators/merge.html) all the reducer-streams to one synchronous pipe of `Model` (Markings!) updates. Please note this is an implementation details and is not necessary something that is exclusive to `observables` or reactive extensions.
+
+### The application loop
+The _synchronous_ part of the application, which is where the results of the successful effects are collected (the $\Delta M^+$-mutation composed on to $M$) and applied by executing the `Reducer`. The reducer is a function, in its execution the Marking is updated, not when it is made. Based on the new Marking it decides what transitions should fire (using the earlier mentioned `run`-function) and dispatches the associated effects (using a [subject](http://reactivex.io/documentation/subject.html)).
+
+In code, this looks like:
+
+```cpp
+[&dispatcher](Model m, const Reducer &f) {
+  auto [r, transitions] = run(f(m));
+  for (auto transition : transitions)
+    dispatcher.on_next(transition);
+  return r;
+}
+```
+
+The dispatcher is a subscriber of a `Subject<Transition>`-instance, of which the observable-side uses the `executeTransition`-function to map the `Transition` to an `Effect` which is then mapped to a `Reducer` in which the marking is updated. This way the cycle is complete! 
+
+### Final remark on the code
+The writeup here on the implementation is very _scarce_. I skipped the part where I parse the Petri net json and generate the three unordered maps ([the parser for the transition-mutation map is here]()) and neglect to mention that the transition-effect map is _hand crafted_: [functions.cc](). Also, all the functions are simply busy-waits for random intervals (ranges from a few milliseconds to maximum 2 seconds). Also forwarding to the browser is kept out of scope. These are details that could be explained, but do not contribute to the goal I would like to show: generating programs from a Petri net.
+
+## Back to the cookie vending machine
+We had a simple cookie vending machine. It has a problem though, which I will show. First remember the machine:
+
+\begin{md}
+![Screenshot][vending_machine_stand_alone]
+\end{md}
+
+We can run it by calling our application:
+
+```
+19:39 ./mpalg_app ../nets/coin_machine_v2.json
+ccc
+5
+Executing Transition 1 on thread 140361580959488
+Executing Transition 1 on thread 140361580959488
+Executing Transition 0 on thread 140361580959488
+Executing Transition 1 on thread 140361580959488
+Executing Transition 0 on thread 140361580959488
+Executing Transition 1 on thread 140361580959488
+Executing Transition 1 on thread 140361580959488
+Executing Transition 0 on thread 140361580959488
+Executing Transition 0 on thread 140361580959488
+Executing Transition 0 on thread 140361580959488
+```
+
+The three c's imply we added three extra cookies on top of the three that are in the initial marking. The 5 refers to the amount of coins we put in the machine (there is listener on the `std::cin`). We would have expected an output like `T1-T0-T1-T0-T1-T0...`, but we got something else (see the order of the transition execution). We can also look at program by viewing its the [Gantt-chart](https://en.wikipedia.org/wiki/Gantt_chart):
+\begin{md}
+![Screenshot ][cookie_plot1]
+\end{md}
+Note: this plot is a bit bad, but the $x$-axis is the time axis in nanoseconds. The colour of the bars represent the [thread](https://en.wikipedia.org/wiki/Thread_(computing)) that the effect was executed on.
+
+This plot confirms the order mismatch that we saw in `std::cout`. Sometimes there are two `T1`s fired consecutively while there still is a cookie, that has been paid for, but has not been delivered! However, there is nothing 'wrong' with the Petri net, we just did not specify clearly enough what we want. We can update the Petri net such that it waits for the cookie to be delivered before accepting new coins:
+
+\begin{md}
+![Screenshot][vending_machine_stand_alone_improved]
+\end{md}
+
+Running:
+
+```
+19:39 ./mpalg_app ../nets/coin_machine_v3.json
+ccc
+5
+Executing Transition 1 on thread 140420611946240
+Executing Transition 0 on thread 140420611946240
+Executing Transition 1 on thread 140420611946240
+Executing Transition 0 on thread 140420611946240
+Executing Transition 1 on thread 140420611946240
+Executing Transition 0 on thread 140420611946240
+Executing Transition 1 on thread 140420611946240
+Executing Transition 0 on thread 140420611946240
+Executing Transition 1 on thread 140420611946240
+Executing Transition 0 on thread 140420611946240
+```
+Much better.
+
+And the new chart:
+
+\begin{md}
+![Screenshot ][cookie_plot2]
+\end{md}
+
+### Does it run any (decision free) Petri net?
+I included a few example nets [here](). I encourage you to also load them into the [web simulator](http://petri.hp102.ru/pnet.html) get a visual representation of the scheduling. If you design a _decision free_ Petri Net in this little web-application and save it, I promise that the little cpp-program will execute it. The _decision free_ part is not negligible. The mesmerizing example number 5 I mentioned earlier is _not_ _decision free_. Hence it will not run as expected. This is because there are unambiguous markings: two or more transitions can fire, but, firing one will make the remaining transition(s) not fireable.   
+
+### Parallel execution
+One of the arguments to use Petri Nets is that they are able to model parallel execution without too much hassle. Our application can only benefit from it if it is also able to distribute tasks over multiple processing cores. For simplicities sake, we use the Rx-scheduling operator [observe_on](http://reactivex.io/documentation/operators/observeon.html) to schedule work on a particular thread. RxCpp supplies a [round robin scheduler](https://en.wikipedia.org/wiki/Round-robin_scheduling): `observe_on_event_loop()` which creates a bunch of threads and schedules work on them. We can modify the original function to do parallel processing::
+```cpp
+auto executeTransition(const observe_on_one_worker &scheduler,
+                       const Store &transition_effect_map) {
+  [=](const Transition &transition) {
+    return observable<>::just(transition, scheduler) |
+           map([](const Transition &transition) {
+             // the map returns a function, the '()' calls it.
+             transition_effect_map.at(transition)();
+             return Reducer([=](Model model) {
+               model.M += model.Dp.at(transition);
+               return model;
+             });
+           });
+    };
+  }
+```
+If we call `executeTransition` by supplying a transition-effect-map _and_ and `observe_on_event_loop()`, it will schedule every `observable<Transition>` on whatever thread is given by the round robin scheduler.
+
+To demonstrate the result, lets use `nets/big7.json` from the [nets]() folder.  
+\begin{md}
+![Screenshot ][net7]
+\end{md}
+Notes: `observe_on_event_loop()` spawns fixed number of threads based on `std::thread::hardware_concurrency()`, hence all the colours :-). Task 4 has a variable duration. From the Gantt-chart you can clearly see some tasks are happening in parallel, which makes a lot of sense if you look at the structure of the Petri net:
+
+## Final notes
+In this post I have explained a about Petri nets and demonstrated how we can turn in a Petri into an application. One of the elephants in the room (I guess there are multiple) is that it seems a bit useless given that it is not clear how the functions can communicate results other then success. There are many ways for entities to communicate but my future plans are inspired by [streams](https://robmosys.pages.gitlab.kuleuven.be/composable-and-explainable-systems-of-systems.pdf#sec%3Acommunication-patterns-stream). 
+
+An application, besides a robotic one, that I am enthousiastic about is letting the function plays note and hence create a piece of music by playing a Petri net. 
+
+
+
+. In literature they are referred to as 'popular'.
+On a different note, if somebody can point me to some place that discusses _why_ this kind of modeling never made it mainstream, I'm all ears. [30 years ago there were already articles considering Petri nets to be mature enough for industrial adaptation](https://pure.tue.nl/ws/files/2028061/612046.pdf).
+
+[vending_machine_stand_alone]: img/vending_machine_stand_alone.svg
+[vending_machine_stand_alone_improved]: img/better_cookie_machine.svg
+[vending_machine_stand_alone_mapped]: img/vending_machine_stand_alone_mapped.svg
+[some_other_machine]: img/some_other_machine.svg
+[cookie_plot1]: img/cookie-box-v2.svg
+[cookie_plot2]: img/cookie-box-v3.svg
+[net7]: img/net7-gantt.svg
+</textarea>
+
+
+</body>
+
+</html>
