@@ -1,0 +1,31 @@
+body {
+    margin: 2%;
+    color: ghostwhite;
+    height:100%; 
+    width: 46em;
+    background-color: rgba(0, 25, 0, 1.0);
+    text-align: justify;
+    text-justify: inter-word;
+    font-size: 1.2em;
+  }
+
+   /* unvisited link */
+a:link {
+    color: red;
+  }
+  
+  /* visited link */
+  a:visited {
+    color: green;
+  }
+  
+  /* mouse over link */
+  a:hover {
+    color: hotpink;
+  }
+  
+  /* selected link */
+  a:active {
+    color: blue;
+  } 
+  
