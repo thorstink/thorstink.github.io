@@ -4,7 +4,7 @@ title: horst.ink
 
 ## Thomas Horstink 
 
-There's not a lot here. But I plan (and let's see how that goes) to list all my contributions to `#genuary22` here.
+There's not a lot here. But I plan (and let's see how that goes) to list all my contributions to [#genuary22](http://genuary.art/){target="_blank"} here.
 
 \[[github](https://github.com/thorstink/){target="_blank" style="color:#F25022!important"}, [twitter](https://twitter.com/shroomsrock){target="_blank" style="color:#1DA1F2!important"}\]
 
