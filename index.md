@@ -11,7 +11,7 @@ There's not a lot here. But I plan (and let's see how that goes) to list all my 
 
 ## Genuary 2022
 
-My work is mostly (going to be) generated using tools I normally use for [robotic state estimation](https://en.wikipedia.org/wiki/Estimation_theory){target="_blank"} software. Concretely, I use [gtsam](https://github.com/borglab/gtsam){target="_blank"} for geometric aspects, OpenGL for rendering and [rxcpp](https://github.com/ReactiveX/RxCpp){target="_blank"} to glue the whole into a *generator-program*, or with a tad of luck, *art-generator-program*. 
+My work is mostly (going to be) generated using tools I normally use for [robotic state estimation](https://en.wikipedia.org/wiki/Estimation_theory){target="_blank"} software. Concretely, I use [gtsam](https://github.com/borglab/gtsam){target="_blank"} for geometric aspects, OpenGL for rendering and [rxcpp](https://github.com/ReactiveX/RxCpp){target="_blank"} to glue the whole into a *generator-program*, or with a tad of luck, an *art-generator-program*. 
 
 |Week|Mon|Tue|Wed|Thu|Fri|Sat|Sun|
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
