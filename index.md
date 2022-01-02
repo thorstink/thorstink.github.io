@@ -15,7 +15,7 @@ My work is mostly (going to be) generated using tools I normally use for [roboti
 
 |Week|Mon|Tue|Wed|Thu|Fri|Sat|Sun|
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
-|52|27|28|29|30|31|[1](assets/genuary22/1/10000_uniformly_coloured_lines.png){target="_blank"}|2|
+|52|27|28|29|30|31|[1](assets/genuary22/1/10klines.png){target="_blank"}|2|
 |1|3|4|5|6|7|8|9|
 |2|10|11|12|13|14|15|16|
 |3|17|18|19|20|21|22|23|
