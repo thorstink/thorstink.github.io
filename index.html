@@ -1,103 +1,154 @@
-<!doctype html>
+<!DOCTYPE HTML>
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="date" content=''>
-  <title>horst.ink</title>
-  <script src="MathJax/es5/tex-chtml.js" id="MathJax-script" async></script>
-  <link rel="stylesheet" href="assets/style.css">
-
+  <meta charset=utf-8>
+  <title>About me - Thomas Horstink</title>
 </head>
+<link rel="stylesheet" href="assets/style.css">
+<style>
+
+  /* #8BD3E6 */
+  /* #FF6D6A */
+  /* #E9EC6B */
+  /* #EFBE7D */
+  /* #B1A2CA */
+
+  nav {
+    margin-left: auto;
+    margin-right: auto;
+    width: 52em;
+    text-align: center;
+    height: 1.5em;
+    background-color: #E9EC6B;
+    border-bottom: solid #EFBE7D;
+  }
+
+  main {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1em;
+    width: 50em;
+    text-align: left;
+    height: auto;
+    background-color: #E9EC6B;
+    box-shadow: 0.4em 0.4em 0.4em rgba(0, 0, 0, 0.4) !important;
+  }
+
+  footer {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50em;
+    text-align: left;
+    padding-left: 2em;
+    /* font-size: small; */
+    height: auto;
+    background-color: #B1A2CA;
+    border-top: solid #EFBE7D;
+  }
+
+  ol {
+    list-style-type: none;
+  }
+
+  ol li:before {
+    content: "[" counter(section, decimal) "] ";
+  }
+
+  ol li {
+    counter-increment: section;
+  }
+
+  ul,
+  ol {
+    padding: 0;
+    margin: 0;
+  }
+
+  nav ul {
+    display: inline-block;
+    list-style: none;
+  }
+
+  nav li {
+    float: left;
+    position: relative;
+    border-right: solid #EFBE7D;
+    padding-right: 2em;
+    padding-left: 2em;
+  }
+
+  nav li:last-child {
+    border-right: none;
+  }
+
+  nav li:first-child {
+    padding-left: 0em;
+  }
+
+  nav li a {
+    color: #FF6D6A;
+    text-decoration: none;
+  }
+
+  nav li a:hover {
+    color: #EFBE7D;
+  }
+
+  p {
+    text-align: justify;
+  }
+</style>
 
 <body>
-  <p>Last Modified on
-    <script type="text/javascript"> 
-      let oLastModif = new Date(document.lastModified);
+  <nav>
+    <ul>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Technical stuff</a></li>
+      <li><a href="#">Other stuff</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+  <main>
+    <h1>Hello,</h1>
+    <h2> I am Thomas Horstink</h2>
+    <p>This is my online portfolio. A place for highlighting some of my work and ideas, mostly technical and robotics
+      related.
+      In the past 7 years I have professionally developed and implemented algorithms and applications applied to robotic
+      products. Varying from mobile ground vehicles<sup><a
+          href="https://robohub.org/wp-content/uploads/2016/04/LeaRobot.jpg" target="_blank">1</a>, <a
+          href="https://www.youtube.com/watch?v=yCJxN_3nnEc" target="_blank">2</a>, <a
+          href="https://www.youtube.com/watch?v=3PcUDiX4OXM" target="_blank">3</a></sup>, a 7 degree of freedom
+      arm<sup><a href="https://www.universal-robots.com/products/ur10-robot/" target="_blank">4</a></sup> and currently
+      quadcopter drones at Mainblades<sup><a href="https://www.mainblades.com" target="_blank">5</a></sup>. Originally I
+      was mostly focussed on state-estimation, e.g. odometry, SLAM and localization. Later that was
+      extended by planning and control. Nowadays I consider myself to be a roboticist of many traits with a lot of practical development experience.
+    </p>
+    <p>
 
-      document.write(oLastModif.toLocaleString("nl-nl"))</script>
-  </p>
-  <h2 id="thomas-horstink">Thomas Horstink</h2>
-  <p>There’s not a lot here. But I plan (and let’s see how that goes) to list all my contributions to <a href="http://genuary.art/" target="_blank">#genuary22</a> here.</p>
-  <p>[<a href="https://github.com/thorstink/" target="_blank" style="color:#F25022!important">github</a>, <a href="https://twitter.com/shroomsrock" target="_blank" style="color:#1DA1F2!important">twitter</a>]</p>
-  <h2 id="genuary-2022">Genuary 2022</h2>
-  <p>My work is mostly (going to be) generated using tools I normally use for <a href="https://en.wikipedia.org/wiki/Estimation_theory" target="_blank">robotic state estimation</a> software. Concretely, I use <a href="https://github.com/borglab/gtsam" target="_blank">gtsam</a> for geometric aspects, OpenGL for rendering and <a href="https://github.com/ReactiveX/RxCpp" target="_blank">rxcpp</a> to glue the whole into a <em>generator-program</em>, or with a tad of luck, an <em>art-generator-program</em>.</p>
-  <table>
-  <thead>
-  <tr class="header">
-  <th style="text-align: center;">Week</th>
-  <th style="text-align: center;">Mon</th>
-  <th style="text-align: center;">Tue</th>
-  <th style="text-align: center;">Wed</th>
-  <th style="text-align: center;">Thu</th>
-  <th style="text-align: center;">Fri</th>
-  <th style="text-align: center;">Sat</th>
-  <th style="text-align: center;">Sun</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr class="odd">
-  <td style="text-align: center;">52</td>
-  <td style="text-align: center;">27</td>
-  <td style="text-align: center;">28</td>
-  <td style="text-align: center;">29</td>
-  <td style="text-align: center;">30</td>
-  <td style="text-align: center;">31</td>
-  <td style="text-align: center;"><a href="assets/genuary22/1/10000_uniformly_coloured_lines.png" target="_blank">1</a></td>
-  <td style="text-align: center;">2</td>
-  </tr>
-  <tr class="even">
-  <td style="text-align: center;">1</td>
-  <td style="text-align: center;">3</td>
-  <td style="text-align: center;">4</td>
-  <td style="text-align: center;">5</td>
-  <td style="text-align: center;">6</td>
-  <td style="text-align: center;">7</td>
-  <td style="text-align: center;">8</td>
-  <td style="text-align: center;">9</td>
-  </tr>
-  <tr class="odd">
-  <td style="text-align: center;">2</td>
-  <td style="text-align: center;">10</td>
-  <td style="text-align: center;">11</td>
-  <td style="text-align: center;">12</td>
-  <td style="text-align: center;">13</td>
-  <td style="text-align: center;">14</td>
-  <td style="text-align: center;">15</td>
-  <td style="text-align: center;">16</td>
-  </tr>
-  <tr class="even">
-  <td style="text-align: center;">3</td>
-  <td style="text-align: center;">17</td>
-  <td style="text-align: center;">18</td>
-  <td style="text-align: center;">19</td>
-  <td style="text-align: center;">20</td>
-  <td style="text-align: center;">21</td>
-  <td style="text-align: center;">22</td>
-  <td style="text-align: center;">23</td>
-  </tr>
-  <tr class="odd">
-  <td style="text-align: center;">4</td>
-  <td style="text-align: center;">24</td>
-  <td style="text-align: center;">25</td>
-  <td style="text-align: center;">26</td>
-  <td style="text-align: center;">27</td>
-  <td style="text-align: center;">28</td>
-  <td style="text-align: center;">29</td>
-  <td style="text-align: center;">30</td>
-  </tr>
-  <tr class="even">
-  <td style="text-align: center;">5</td>
-  <td style="text-align: center;">31</td>
-  <td style="text-align: center;">1</td>
-  <td style="text-align: center;">2</td>
-  <td style="text-align: center;">3</td>
-  <td style="text-align: center;">4</td>
-  <td style="text-align: center;">5</td>
-  <td style="text-align: center;">6</td>
-  </tr>
-  </tbody>
-  </table>
+    </p>
+  </main>
+  <footer>
+    <ol>
+      <li>
+        LEA, the lean elderly assistant from Robot Care Systems. Unfortunately development has ceased.
+      </li>
+      <li>
+        Lely Collector, a cow-manure collection robot.
+      </li>
+      <li>
+        Lely Juno, a feed-push robot.
+      </li>
+      <li>
+        Smart Robotic's Smart Item Picker based on a Universal Robotics arm.
+      </li>
+      <li>
+        A Mainblades inspection drone, based on the DJI M300 with custom payload
+      </li>
+
+    </ol>
+
+  </footer>
 </body>
 
 </html>

@@ -1,31 +1,42 @@
 body {
-    margin: 2%;
-    color: ghostwhite;
-    height:100%; 
-    width: 46em;
-    background-color: rgba(0, 25, 0, 1.0);
-    text-align: justify;
-    text-justify: inter-word;
-    font-size: 1.2em;
-  }
+  height: 100%;
+  background-color: #B1A2CA;
+  text-align: justify;
+  text-justify: inter-word;
+  font-size: 1.2em;
+}
+h1, h2, h3, h4 {
+  text-align: left;
+  font-family: 'Linux Libertine','Georgia','Times','Source Serif Pro',serif;
+}
+img {
+  display: block;
+  max-width: 80%;
+  max-height: 15em;
+  margin-left: auto;
+  margin-right: auto;
+}
 
-   /* unvisited link */
+main {
+  background-color: #E9EC6B!important;
+}
+
+/* unvisited link */
 a:link {
-    color: red;
-  }
-  
-  /* visited link */
-  a:visited {
-    color: green;
-  }
-  
-  /* mouse over link */
-  a:hover {
-    color: hotpink;
-  }
-  
-  /* selected link */
-  a:active {
-    color: blue;
-  } 
-  
+  color: red;
+}
+
+/* visited link */
+a:visited {
+  color: green;
+}
+
+/* mouse over link */
+a:hover {
+  color: hotpink;
+}
+
+/* selected link */
+a:active {
+  color: blue;
+}
