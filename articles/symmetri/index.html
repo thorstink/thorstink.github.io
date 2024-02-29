@@ -1,54 +1,31 @@
-<!DOCTYPE HTML>
-<html lang="en">
-
-<head>
-  <meta charset=utf-8>
-  <title>Overview</title>
-</head>
-<link rel="stylesheet" href="../../assets/style.css">
-
-<style>
-  img + em {
-    text-align:center;
-    display: block;
-    margin: auto; 
-  }
-  img[src*='#center'] { 
-    display: block;
-    margin: auto;
-  }
-  r { color: Red; opacity: 0.4; }
-  o { color: Orange; opacity: 0.4; }
-  g { color: Green; opacity: 0.4; }
-</style>
-<link rel="stylesheet" href="../shared/highlight/styles/stackoverflow-light.css">
-<script>
-window.texme = { renderOnLoad: false }
-window.onload = function () {
-    texme.renderPage()
-    hljs.highlightAll();
-}
-<script src="../shared/highlight/highlight.pack.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/texme@1.2.2"></script>
-
-</script>
-
-
-
-<body>
-<textarea>
 # Composing and nesting in Symmetri
 
-Complex systems, as they grow, eventually overload the cognitive load of everyone. A common approach to tackle the understandability issue of complex systems is simply chopping the system up into smaller, individually understandable subsystems (but tends to happen more often than you would hope). However, in most cases it is not the goal to first build a complex system to only later divide it up into subsystems. The far more preferable course of events is that small systems are built and put together to form a larger apparatus that is supposed to serve some purpose the subsystems individually could not. The art of putting small systems together lies in being able to model the behavior of the whole as a product of the subystems. In Symmetri there are two ways of constructing a system that is build out of smaller systems: nesting and composing. When we nest Petri nets that analysis is simple: the nested Petri net is simply treated as if it were any other transition. When composing nets, we generate a new Petri net from the subnets according to a composition rule. We will discuss both mechanisms in the remainder of this article.
+Complex systems, as they grow, eventually overload the cognitive load of everyone. A common approach to tackle the
+understandability issue of complex systems is simply chopping the system up into smaller, individually understandable
+subsystems (but tends to happen more often than you would hope). However, in most cases it is not the goal to first
+build a complex system to only later divide it up into subsystems. The far more preferable course of events is that
+small systems are built and put together to form a larger apparatus that is supposed to serve some purpose the
+subsystems individually could not. The art of putting small systems together lies in being able to model the behavior of
+the whole as a product of the subystems. In Symmetri there are two ways of constructing a system that is build out of
+smaller systems: nesting and composing. When we nest Petri nets that analysis is simple: the nested Petri net is simply
+treated as if it were any other transition. When composing nets, we generate a new Petri net from the subnets according
+to a composition rule. We will discuss both mechanisms in the remainder of this article.
 
 ## Today's toy systems
 
-It always helps to have an example to explain concepts. Today we have two *coloured* Petri nets. The first is a one-step processor. It revolves around the transitions that has the input-places *ResourceSingleProcessors* and *TaskBucket*. If the transition outputs a normal (black) token, the next transition will deposit a token into the output-places *SuccessfulTasks* and back into the *ResourceSingleProcessors* so a next task can be dequeued. If the transition fails, it will produce a *<r>pink</r>* token and the *<r>pink</r>*-transition will fire. This will put the failed task back in the *TaskBucket* and release the resource used to process the task.
+It always helps to have an example to explain concepts. Today we have two *coloured* Petri nets. The first is a one-step
+processor. It revolves around the transitions that has the input-places *ResourceSingleProcessors* and *TaskBucket*. If
+the transition outputs a normal (black) token, the next transition will deposit a token into the output-places
+*SuccessfulTasks* and back into the *ResourceSingleProcessors* so a next task can be dequeued. If the transition fails,
+it will produce a *<r>pink</r>* token and the *<r>pink</r>*-transition will fire. This will put the failed task back in
+the *TaskBucket* and release the resource used to process the task.
 
 ![Single](img/single_processor.svg#center)
 *A single step processing machine*
 
-The second system is bigger because this system requires two steps (which can both fail) to process a task (observe the place *Intermediate*). But it is still similar: if everything goes right, tokens are moved to the *SuccessfulTasks*-place and if things go wrong, the task goes back to the *TaskBucket* and it can be retried.
+The second system is bigger because this system requires two steps (which can both fail) to process a task (observe the
+place *Intermediate*). But it is still similar: if everything goes right, tokens are moved to the
+*SuccessfulTasks*-place and if things go wrong, the task goes back to the *TaskBucket* and it can be retried.
 
 ![Dual](img/dual_processor.svg#center)
 *A two-step processing machine*
@@ -56,19 +33,17 @@ The second system is bigger because this system requires two steps (which can bo
 
 ## Nesting
 
-Nesting Petri nets in Symmetri is straightforward. Instead of binding a *callback* to a transition, we can simply bind a Petri net to a transition. $T_i$
+Nesting Petri nets in Symmetri is straightforward. Instead of binding a *callback* to a transition, we can simply bind a
+Petri net to a transition. $T_i$
 
 ## Composition
 
-Dividing systems up into smaller systems is a popular way to 
+Dividing systems up into smaller systems is a popular way to
 
 
 - individual token philosophy
 
-
-</textarea>
-
-
-</body>
-
-</html>
+<link rel="stylesheet" href="../../assets/style.css">
+<link rel="stylesheet" href="../shared/highlight/styles/stackoverflow-light.css">
+<script src="../shared/highlight/highlight.pack.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/texme@1.2.2"></script>
