@@ -1,3 +1,4 @@
+<textarea>
 # Generating programs from Petri nets
 
 In the past weeks I have experimented with [Petri nets](https://en.wikipedia.org/wiki/Petri_net) and I want to share my learnings. More specifically I will share my experiment where I turn a Petri net into a (c++) program. I think you do not need to be thoroughly acquainted with Petri nets to follow this post, as neither am I, but a basic understanding is needed as it will not be covered here. Some particular (c++)-programming knowledge is required to understand the implementation.
@@ -295,7 +296,7 @@ An application, besides a robotic one, that I am enthousiastic about is letting 
 
 
 In literature they are referred to as 'popular'.
-On a different note, if somebody can point me to some place that discusses _why_ this kind of modeling never made it mainstream, I'm all ears. [30 years ago there were already articles considering Petri nets to be mature enough for industrial adaptation](https://pure.tue.nl/ws/files/2028061/612046.pdf).
+On a different note, if somebody can point me to some place that discusses _why_ this kind of modeling never made it mainstream, I'm all ears. [30 years ago there were already articles considering Petri nets to be mature enough for industrial adaptation](https://pure.tue.nl/ws/files/2028061/612046.pdf)...
 
 [vending_machine_stand_alone]: img/vending_machine_stand_alone.svg
 [vending_machine_stand_alone_improved]: img/better_cookie_machine.svg
@@ -305,7 +306,16 @@ On a different note, if somebody can point me to some place that discusses _why_
 [cookie_plot2]: img/cookie-box-v3.svg
 [net7]: img/net7-gantt.svg
 
-<script src="https://cdn.jsdelivr.net/npm/texme@1.2.2"></script>
-<link rel="stylesheet" href="../shared/highlight/styles/stackoverflow-light.css">
+</textarea>
+
 <link rel="stylesheet" href="../../assets/style.css">
+<link rel="stylesheet" href="../shared/highlight/styles/stackoverflow-light.css">
+<script>
+  window.texme = {
+    onRenderPage: function () {
+      hljs.highlightAll();
+    }
+  }
+</script>
 <script src="../shared/highlight/highlight.pack.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/texme@1.2.2"></script>

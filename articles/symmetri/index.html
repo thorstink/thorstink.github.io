@@ -1,3 +1,4 @@
+<textarea>
 # Composing and nesting in Symmetri
 
 Complex systems, as they grow, eventually overload the cognitive load of everyone. A common approach to tackle the
@@ -43,7 +44,16 @@ Dividing systems up into smaller systems is a popular way to
 
 - individual token philosophy
 
+</textarea>
+
 <link rel="stylesheet" href="../../assets/style.css">
 <link rel="stylesheet" href="../shared/highlight/styles/stackoverflow-light.css">
+<script>
+  window.texme = {
+    onRenderPage: function () {
+      hljs.highlightAll();
+    }
+  }
+</script>
 <script src="../shared/highlight/highlight.pack.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/texme@1.2.2"></script>
