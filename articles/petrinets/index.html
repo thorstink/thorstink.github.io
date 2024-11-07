@@ -308,14 +308,17 @@ On a different note, if somebody can point me to some place that discusses _why_
 
 </textarea>
 
-<link rel="stylesheet" href="../../assets/style.css">
-<link rel="stylesheet" href="../shared/highlight/styles/stackoverflow-light.css">
-<script>
-  window.texme = {
-    onRenderPage: function () {
-      hljs.highlightAll();
+<head>
+  <base target="_blank">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../shared/highlight/styles/stackoverflow-light.css">
+  <script>
+    window.texme = {
+      onRenderPage: function () {
+        hljs.highlightAll();
+      }
     }
-  }
-</script>
-<script src="../shared/highlight/highlight.pack.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/texme@1.2.2"></script>
+  </script>
+  <script src="../shared/highlight/highlight.pack.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/texme@1.2.2"></script>
+</head>
