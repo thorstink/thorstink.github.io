@@ -1,0 +1,681 @@
+body {
+  font-family: Gambetta-Variable, serif;
+  margin: 0px;
+  padding: 0px;
+  font-weight: 500;
+  background-color: white;
+  color: black;
+  overflow: hidden auto;
+  touch-action: pan-y;
+
+}
+
+* {
+  box-sizing: border-box;
+}
+
+header {
+  background-color: black;
+  color: white;
+  padding: 40px 20px;
+  text-align: center;
+  position: relative;
+}
+
+.signup-bar p {
+  margin: 0px;
+}
+
+.signup-bar a {
+  color: white;
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+.signup-bar a:hover {
+  color: black;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+#about::before,
+#Keynote::before,
+#participation::before,
+#venue::before,
+#contact::before {
+  content: "";
+  display: block;
+  height: 125px;
+  margin-top: -125px;
+  visibility: hidden;
+}
+
+.accordion {
+  border-bottom-width: 3px;
+  border-bottom-style: solid;
+  border-bottom-color: black;
+  overflow: hidden;
+}
+
+.accordion-header {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  padding-bottom: 0px;
+  padding-left: 5px;
+  cursor: pointer;
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.Keynotelist {
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+  border-bottom-color: black;
+  overflow: hidden;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  padding-top: 5px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+.accordion-header:hover,
+.accordion.open .accordion-header {
+  background-color: black;
+  color: white;
+}
+
+.accordion-icon {
+  font-size: 3.5rem;
+  margin-right: 40px;
+  transition: transform 0.3s;
+  font-weight: 200;
+}
+
+.accordion-content {
+  max-height: 0px;
+  transition: max-height 0.3s;
+  display: flex;
+  flex: 1 1 0%;
+  max-width: 100%;
+  margin: 0px;
+}
+
+.accordion-content .accordion-hour p {
+  font-size: 2rem;
+}
+
+.accordion-hour {
+  flex: 3 1 0%;
+  padding-left: 65px;
+}
+
+.accordion-description {
+  flex: 7 1 0%;
+  padding-left: 0px;
+}
+
+.accordion-content p {
+  margin: 10px 0px;
+  font-size: 1.2rem;
+}
+
+.accordion.open .accordion-content {
+  max-height: 3000px;
+  padding: 10px;
+}
+
+.accordion.open .accordion-icon {
+  transform: rotate(45deg);
+}
+
+#map {
+  height: 400px;
+  width: 100%;
+  margin: 30px 0px;
+  background-color: rgb(239, 62, 35);
+}
+
+nav {
+  background-color: white;
+  color: black;
+  padding: 10px 20px;
+  display: flex;
+  flex: 1 1 0%;
+  justify-content: space-between;
+  position: sticky;
+  top: 0px;
+  z-index: 1000;
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+  border-bottom-color: black;
+}
+
+.nav-container {
+  display: flex;
+  width: 100%;
+  flex: 8 1 0%;
+}
+
+.nav-title {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex: 1 1 0%;
+}
+
+.nav-title .marx {
+  color: rgb(239, 62, 35);
+  font-size: 1.8rem;
+  font-weight: 500;
+  font-style: normal;
+  align-items: center;
+}
+
+.nav-title .anthropocene {
+  color: black;
+  font-size: 1.8rem;
+  font-weight: 500;
+  font-style: normal;
+  margin-left: 9px;
+  align-items: center;
+}
+
+.nav-links {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+.nav-links a {
+  color: black;
+  font-size: 1.8rem;
+  font-weight: normal;
+  text-decoration: none;
+}
+
+.nav-links a:hover {
+  color: rgb(239, 62, 35);
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.hamburger div {
+  width: 25px;
+  height: 3px;
+  background-color: black;
+}
+
+.fullscreen-menu {
+  display: none;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  color: black;
+  z-index: 2000;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.fullscreen-menu.active {
+  display: flex;
+}
+
+.fullscreen-menu a {
+  font-size: 2rem;
+  text-decoration: none;
+  color: black;
+}
+
+.fullscreen-menu a:hover {
+  color: rgb(239, 62, 35);
+}
+
+.close-menu {
+  position: absolute;
+  top: -8px;
+  right: 22px;
+  font-size: 3rem;
+  cursor: pointer;
+}
+
+.section {
+  padding: 40px 20px;
+  max-width: 900px;
+  margin: 20px auto;
+  position: relative;
+}
+
+.section h2 {
+  font-size: 5rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+  display: inline-block;
+  background: black;
+  color: white;
+  padding: 10px;
+}
+
+.section h3 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  font-weight: bold;
+  display: inline-block;
+  background: black;
+  color: white;
+  padding: 10px;
+}
+
+.section p,
+.section ul {
+  font-size: 4rem;
+  line-height: 1.6;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.grid p {
+  background-color: black;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.highlight {
+  background-color: black;
+  color: white;
+  padding: 20px;
+  margin: 40px 0px;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+footer {
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+footer p {
+  font-size: 1.8rem;
+  margin: 5px 0px;
+  font-weight: 300;
+}
+
+body p {
+  margin: 5px 0px;
+}
+
+.angled-shape {
+  position: absolute;
+  width: 150px;
+  height: 30px;
+  background-color: black;
+}
+
+.main-container {
+  display: flex;
+  flex: 1 1 0%;
+  max-width: 100%;
+  overflow-x: hidden;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.left-section {
+  flex: 5 1 0%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  overflow: hidden;
+}
+
+.left-section img {
+  max-width: 100%;
+  height: auto;
+}
+
+.right-section {
+  flex: 5 1 0%;
+  padding-right: 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+.skew-wrapper {
+  transform: skew(0deg, -16deg);
+  transform-origin: left top;
+  padding-top: 80px;
+}
+
+p.date {
+  display: inline-block;
+  flex: 1;
+  position: relative;
+  text-align: right;
+}
+
+.Keynotelist img {
+  height: 1.3em;
+  padding-top: 0.1em;
+  padding-bottom: 0.1em;
+  padding-right: 0.5em;
+}
+
+#cv a, .marx a:any-link {
+  all: unset;
+}
+
+.left-section canvas {
+  border-right: 2px solid black;
+  margin-right:2em;
+}
+
+.skew-wrapper-left {
+  transform: skew(0deg, 16deg);
+  transform-origin: right top;
+}
+
+.right-section h1 {
+  line-height: 1;
+  color: black;
+  font-weight: 600;
+  display: block;
+  margin-top: 0px;
+  margin-bottom: 5px;
+}
+
+.right-section h2 {
+  font-size: 3rem;
+  line-height: 1.3;
+  color: black;
+  font-weight: 400;
+  display: block;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.right-section h3 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  margin-top: 50px;
+  font-weight: 500;
+  display: inline-block;
+  color: white;
+  width: auto;
+  background-color: rgb(239, 62, 35);
+  padding: 10px 20px;
+}
+
+.right-section p,
+.right-section ul {
+  font-size: 1.3rem;
+  line-height: 1.2;
+  font-weight: 400;
+}
+
+.link-button {
+  width: 100%;
+  padding: 10px 10px 10px 20px;
+  background-color: white;
+  color: rgb(239, 62, 35);
+  border: 2px solid rgb(239, 62, 35);
+  font-size: 2rem;
+  font-family: inherit;
+  font-weight: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.2s;
+  margin-top: 10px;
+}
+
+.link-button:hover {
+  background-color: rgb(239, 62, 35);
+  color: white;
+}
+
+.program-button {
+  width: 100%;
+  color: black;
+  font-family: inherit;
+  font-weight: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.2s;
+  font-size: 2.5rem;
+  margin: 0px;
+}
+
+.line-program {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-top-width: 2px;
+  border-top-style: solid;
+  border-top-color: black;
+  width: 100%;
+  display: block;
+}
+
+.program-button:hover {
+  color: rgb(239, 62, 35);
+}
+
+.signup-bar {
+  background-color: rgb(239, 62, 35);
+  color: white;
+  text-align: center;
+  padding: 15px 20px;
+  font-size: 1.6rem;
+  font-weight: normal;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 5px;
+  position: sticky;
+  z-index: 1000;
+  top: 57px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.line {
+  width: 2px;
+  height: 30px;
+  background-color: white;
+}
+
+.signup-content {
+  flex: 1 1 0%;
+  text-align: center;
+}
+
+.left {
+  margin-right: 5px;
+}
+
+.right {
+  margin-left: 5px;
+}
+
+.dynamic-text {
+  font-size: clamp(4rem, 6vw, 12rem);
+  margin: 0px;
+}
+
+@media (max-width: 1080px) {
+  .left-section {
+    padding-top: 20px;
+    padding-left: 0;
+    padding-right: 0;
+    display:block;
+    border:none;
+  }
+
+  .dynamic-text {
+    font-size: clamp(3rem, 12vw, 12rem);
+    margin: 0px;
+  }
+
+  .dynamic-text-2 {
+    font-size: clamp(1rem, 8vw, 7rem);
+    margin: 0px;
+  }
+
+  body {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .main-container {
+    flex-direction: column;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .right-section {
+    flex: 0 0 auto;
+    width: 100%;
+    padding: 0px 20px 20px;
+    margin: 0px;
+    box-sizing: border-box;
+  }
+
+  .skew-wrapper {
+    transform: skew(0deg, 8deg);
+    transform-origin: left top;
+    padding-top: 0px;
+  }
+
+  .skew-wrapper-left {
+    transform: skew(0deg, -8deg);
+    transform-origin: right bottom;
+    padding-bottom: 140px;
+  }
+
+  .left-section canvas {
+    border-right: 1px solid black;
+  }
+
+  .left-section img {
+    max-width: 100%;
+  }
+
+  .right-section h1 {
+    display: block;
+    width: 100%;
+  }
+
+  .right-section h2 {
+    display: block;
+    margin-top: 10px;
+    font-size: 2.5rem;
+  }
+
+  .right-section h3 {
+    font-size: 2rem;
+    color: white;
+    background-color: black;
+    padding: 10px 20px;
+    border-top-width: 0px;
+    border-top-style: none;
+    border-top-color: currentcolor;
+    width: auto;
+  }
+
+  .right-section p,
+  .right-section ul {
+    font-size: 1.2rem;
+  }
+
+  .accordion-hour {
+    flex: 3 1 0%;
+    padding-left: 0px;
+  }
+
+  .accordion-content .accordion-hour p {
+    font-size: 1.2rem;
+  }
+
+  .nav-title .marx {
+    color: rgb(239, 62, 35);
+    font-size: 1.3rem;
+    font-weight: 600;
+    font-style: normal;
+    align-items: center;
+  }
+
+  .nav-title .anthropocene {
+    color: black;
+    font-size: 1.3rem;
+    font-weight: 600;
+    font-style: normal;
+    margin-left: 5px;
+    align-items: center;
+  }
+
+  footer p {
+    font-size: 1.3rem;
+  }
+
+  .signup-bar {
+    font-size: 1.3rem;
+    top: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    position: sticky;
+  }
+
+  .line {
+    width: 1.5px;
+    height: 30px;
+    background-color: white;
+  }
+
+  .signup-content {
+    flex: 1 1 0%;
+    text-align: center;
+  }
+
+  .left {
+    margin-right: 4px;
+  }
+
+  .right {
+    margin-left: 4px;
+  }
+}

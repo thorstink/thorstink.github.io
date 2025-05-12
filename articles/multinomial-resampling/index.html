@@ -1,0 +1,222 @@
+<textarea>
+# Thoughts on multinomial resampling implementations in C++
+
+Resampling is a technique used in particle filters (also called *sequential Monte Carlo* methods) to mitigate the unbounded increase of variance of the importance weights. Particle filters are broadly used ([see this list](https://en.wikipedia.org/wiki/Particle_filter#Applications)), and in robotics the canonical example is *[Monte Carlo localization (MCL)](https://en.wikipedia.org/wiki/Monte_Carlo_localization)*. There are broadly four types of resampling schemes: *multinomial*, *systematic*, *residual* and *stratified* resampling. Multinomial is supposedly the worst scheme according to [this Appendix](https://www.igi-global.com/pdf.aspx?tid=83858&ptid=66380&ctid=17&t=appendix%20b), none the less, implementing it gave some space to experiment and share some insights.
+
+## A simple implementation
+
+[Jose Luis Blanco](https://w3.ual.es/~jlblanco/) kindly shared some Matlab implementations of the aforementioned resampling schemes [in 2009](https://www.mathworks.com/matlabcentral/fileexchange/24968-resampling-methods-for-particle-filtering), and in particular the multinomial implementation:
+
+```matlab
+function [ indx ] = resampleMultinomial( w )
+M = length(w);
+Q = cumsum(w);
+Q(M)=1; % Just in case...
+i=1;
+while (i<=M),
+    sampl = rand(1,1);  % (0,1]
+    j=1;
+    while (Q(j)<sampl),
+        j=j+1;
+    end;
+    indx(i)=j;
+    i=i+1;
+end
+```
+
+Which we can turn into some C++:
+
+```cpp
+std::vector<size_t> resampleMultinomial(const std::vector<float> &w)
+  {
+      const size_t M = w.size();
+      std::vector<size_t> indx(M);
+      std::vector<float> Q(M);
+      std::partial_sum(w.cbegin(), w.cend(), Q.begin()); // cumsum
+      Q.back() = 1.0f;  
+      size_t i = 0;
+      std::random_device rd;
+      std::mt19937 gen(rd());
+      std::uniform_real_distribution<float> dis(1.0, 0.0);
+      while (i < M)
+      {
+          const float sampl = dis(gen);
+          size_t j = 0;
+          while (Q[j] < sampl)
+          {
+              j++;
+          }
+          indx[i] = j;
+          i++;
+      }
+
+      return indx;
+  }
+```
+
+To benchmark, we'll run the function `resampleMultinomal` on weight-arrays of different sizes: `[100, 1000, 10000, 100000, 1000000]`. The results are  disappointing, see this [godbolt](https://godbolt.org/z/637jG9Pa9) to run it yourself. The result does not suggest O(N)-complexity, which is what often is mentioned for multinomial resampling.
+
+```
+100 weights take 10 [us]
+1000 weights take 476 [us]
+10000 weights take 80361 [us]
+100000 weights take 7454472 [us]
+Program stderr
+
+Killed - processing time exceeded
+Program terminated with signal: SIGKILL
+```
+
+## Attempts to improve
+
+Let's investigate how to improve. First we look at Blanco's [C++ implementation](https://github.com/MRPT/mrpt/blob/02f3ac4a59debdb6b81cb62b74647c989409d1d3/libs/bayes/src/CParticleFilterCapable.cpp#L90). Opposed to sampling in the loop, the samples are already drawn from the uniform distribution upfront:
+
+```cpp
+vector<double> T(M);
+getRandomGenerator().drawUniformVector(T, 0.0, 0.999999);
+T.push_back(1.0);
+```
+
+We can do that too:
+
+```cpp
+std::generate(probabilities.begin(), probabilities.end(), []{return dis(gen);});
+...
+std::vector<size_t> resampleMultinomial1(const std::vector<numeric_type> &w, const std::vector<numeric_type>& probabilities)
+  {
+      const size_t M = w.size();
+      std::vector<size_t> indx(M);
+      std::vector<numeric_type> Q(M);
+      std::partial_sum(w.cbegin(), w.cend(), Q.begin()); // cumsum
+
+      size_t i = 0;
+      while (i < M)
+      {
+          const numeric_type sampl = probabilities[i];
+          size_t j = 0;
+          while (Q[j] < sampl)
+          {
+              j++;
+          }
+          indx[i] = j;
+          i++;
+      }
+
+      return indx;
+  }
+```
+
+This does not give a great performance boost. It's also unlikely that the sampling of random numbers at this scale is the bottleneck, the loop-logic more likely is.
+
+```
+100 weights take 9 [us]
+1000 weights take 625 [us]
+10000 weights take 53857 [us]
+100000 weights take 7894061 [us]
+Program stderr
+
+Killed - processing time exceeded
+Program terminated with signal: SIGKILL
+```
+
+Blanco also uses slightly different logic, by sorting the uniform draws, probably saving some loops. We can try that too:
+
+```cpp
+std::vector<size_t> resampleMultinomial2(const std::vector<numeric_type> &w, std::vector<numeric_type> &probabilities)
+  {
+      const size_t M = w.size();
+      std::vector<size_t> indx(M);
+      std::vector<numeric_type> Q(M);
+      std::partial_sum(w.cbegin(), w.cend(), Q.begin()); // cumsum
+      std::sort(probabilities.begin(), probabilities.end());
+      size_t i, j;
+      i = j = 0;
+      while (i < M)
+      {
+          if (probabilities[i] < Q[j])
+          {
+              indx[i++] = (unsigned int)j;
+          }
+          else
+          {
+              j++;
+              if (j >= M)
+                  j = M - 1;
+          }
+      }
+      return indx;
+  }
+```
+
+Gives much better results already! 
+
+```
+100 weights take 10 [us]
+1000 weights take 104 [us]
+10000 weights take 1077 [us]
+100000 weights take 13170 [us]
+1e+06 weights take 144019 [us]
+```
+
+But sorting a vector of random samples is one of the worst possible things to do. By definition the entries of the vector are randomly ordered, so it will take a lot of moving to get them in order. I quickly timed sorting the `probabilities`-vector to have an idea:
+
+```
+100000 weights take 15685 [us]
+```
+
+That seems 80% of the time spend in the entire resampling function. Using a bit of [c++-seasoning](https://www.youtube.com/watch?v=qH6sSOr-yk8) we can eliminate the loop and take advantage over the fact that `Q`, the cumulative-sum vector, is monotonically increasing, and the predicate `probabilities[i] < Q[j]` can be replaced by a [lower-bound-search](https://en.cppreference.com/w/cpp/algorithm/lower_bound). We can then use `std::distance` to turn the iterator into an index and `std::transform` to replace the `while`-loop:
+
+```cpp
+std::vector<size_t> resampleMultinomial3(const std::vector<numeric_type> &w, const std::vector<numeric_type> &probabilities)
+  {
+      const size_t M = w.size();
+      std::vector<size_t> indx(M);
+      std::vector<numeric_type> Q(M);
+      std::partial_sum(w.cbegin(), w.cend(), Q.begin()); // cumsum
+      std::transform(probabilities.cbegin(), probabilities.cend(), indx.begin(), [begin = Q.cbegin(), end = Q.cend()](auto p)
+                     { return std::distance(begin, std::lower_bound(begin, end, p)); });
+      return indx;
+  }
+```
+This implementation deterministicly always reaches the end of the program! And its' runtimes are comparable to `resampleMultinomial2`. This implementation has the advantage that it's trivial to parallelize. There's no real performance benefit at first sight.
+
+```
+100 weights take 6 [us]
+1000 weights take 76 [us]
+10000 weights take 869 [us]
+100000 weights take 11555 [us]
+1e+06 weights take 175319 [us]
+```
+
+## Drawing samples from a uniform real distribution
+
+Populating the `probabilities`-vector is now done using standard-library random-tools. Let's see how long it actually takes:
+
+```
+100 samples take 0 [us]
+1000 samples take 6 [us]
+10000 samples take 70 [us]
+100000 samples take 711 [us]
+1e+06 samples take 7242 [us]
+```
+
+We can conclude it takes about 10% of the resampling time. 
+
+</textarea>
+
+<head>
+  <base target="_blank">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../shared/highlight/styles/stackoverflow-light.css">
+  <script>
+    window.texme = {
+      onRenderPage: function () {
+        hljs.highlightAll();
+      }
+    }
+  </script>
+  <script src="../shared/highlight/highlight.min.js"></script>
+  <script src="../shared/highlight/matlab.min.js"></script>
+  <script src="../shared/highlight/cpp.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/texme@1.2.2"></script>
+</head>

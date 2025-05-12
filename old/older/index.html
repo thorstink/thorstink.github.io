@@ -1,0 +1,154 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+  <meta charset=utf-8>
+  <title>About me - Thomas Horstink</title>
+</head>
+<link rel="stylesheet" href="style.css">
+<style>
+
+  /* #8BD3E6 */
+  /* #FF6D6A */
+  /* #E9EC6B */
+  /* #EFBE7D */
+  /* #B1A2CA */
+
+  nav {
+    margin-left: auto;
+    margin-right: auto;
+    width: 52em;
+    text-align: center;
+    height: 1.5em;
+    background-color: #E9EC6B;
+    border-bottom: solid #EFBE7D;
+  }
+
+  main {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1em;
+    width: 50em;
+    text-align: left;
+    height: auto;
+    background-color: #E9EC6B;
+    box-shadow: 0.4em 0.4em 0.4em rgba(0, 0, 0, 0.4) !important;
+  }
+
+  footer {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50em;
+    text-align: left;
+    padding-left: 2em;
+    /* font-size: small; */
+    height: auto;
+    background-color: #B1A2CA;
+    border-top: solid #EFBE7D;
+  }
+
+  ol {
+    list-style-type: none;
+  }
+
+  ol li:before {
+    content: "[" counter(section, decimal) "] ";
+  }
+
+  ol li {
+    counter-increment: section;
+  }
+
+  ul,
+  ol {
+    padding: 0;
+    margin: 0;
+  }
+
+  nav ul {
+    display: inline-block;
+    list-style: none;
+  }
+
+  nav li {
+    float: left;
+    position: relative;
+    border-right: solid #EFBE7D;
+    padding-right: 2em;
+    padding-left: 2em;
+  }
+
+  nav li:last-child {
+    border-right: none;
+  }
+
+  nav li:first-child {
+    padding-left: 0em;
+  }
+
+  nav li a {
+    color: #FF6D6A;
+    text-decoration: none;
+  }
+
+  nav li a:hover {
+    color: #EFBE7D;
+  }
+
+  p {
+    text-align: justify;
+  }
+</style>
+
+<body>
+  <nav>
+    <ul>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Technical stuff</a></li>
+      <li><a href="#">Other stuff</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+  <main>
+    <h1>Hello,</h1>
+    <h2> I am Thomas Horstink</h2>
+    <p>This is my online portfolio. A place for highlighting some of my work and ideas, mostly technical and robotics
+      related.
+      In the past 7 years I have professionally developed and implemented algorithms and applications applied to robotic
+      products. Varying from mobile ground vehicles<sup><a
+          href="https://robohub.org/wp-content/uploads/2016/04/LeaRobot.jpg" target="_blank">1</a>, <a
+          href="https://www.youtube.com/watch?v=yCJxN_3nnEc" target="_blank">2</a>, <a
+          href="https://www.youtube.com/watch?v=3PcUDiX4OXM" target="_blank">3</a></sup>, a 7 degree of freedom
+      arm<sup><a href="https://www.universal-robots.com/products/ur10-robot/" target="_blank">4</a></sup> and currently
+      quadcopter drones at Mainblades<sup><a href="https://www.mainblades.com" target="_blank">5</a></sup>. Originally I
+      was mostly focussed on state-estimation, e.g. odometry, SLAM and localization. Later that was
+      extended by planning and control. Nowadays I consider myself to be a roboticist of many traits with a lot of practical development experience.
+    </p>
+    <p>
+
+    </p>
+  </main>
+  <footer>
+    <ol>
+      <li>
+        LEA, the lean elderly assistant from Robot Care Systems. Unfortunately development has ceased.
+      </li>
+      <li>
+        Lely Collector, a cow-manure collection robot.
+      </li>
+      <li>
+        Lely Juno, a feed-push robot.
+      </li>
+      <li>
+        Smart Robotic's Smart Item Picker based on a Universal Robotics arm.
+      </li>
+      <li>
+        A Mainblades inspection drone, based on the DJI M300 with custom payload
+      </li>
+
+    </ol>
+
+  </footer>
+</body>
+
+</html>

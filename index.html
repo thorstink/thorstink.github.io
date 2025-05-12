@@ -1,154 +1,345 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset=utf-8>
-  <title>About me - Thomas Horstink</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thomas in the Anthropocene</title>
+    <meta name="description" content="Thomas Horstink's personal portofolio website.">
+
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<link rel="stylesheet" href="assets/style.css">
-<style>
 
-  /* #8BD3E6 */
-  /* #FF6D6A */
-  /* #E9EC6B */
-  /* #EFBE7D */
-  /* #B1A2CA */
+<body id="page">
+    <nav>
+        <div class="nav-container">
+            <div class="nav-title">
+                <span class="marx"><a href="">Thomas</a></span>
+                <span class="anthropocene">in the Anthropocene</span>
 
-  nav {
-    margin-left: auto;
-    margin-right: auto;
-    width: 52em;
-    text-align: center;
-    height: 1.5em;
-    background-color: #E9EC6B;
-    border-bottom: solid #EFBE7D;
-  }
+            </div>
+            <div class="nav-links">
+                <a href="#About">About</a>
+                <a href="#Robotics">Robotics</a>
+                <a href="#cv">C.V.</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </nav>
 
-  main {
-    margin-left: auto;
-    margin-right: auto;
-    padding: 1em;
-    width: 50em;
-    text-align: left;
-    height: auto;
-    background-color: #E9EC6B;
-    box-shadow: 0.4em 0.4em 0.4em rgba(0, 0, 0, 0.4) !important;
-  }
+    <div class="fullscreen-menu" id="fullscreen-menu">
+        <span class="close-menu" id="close-menu">&times;</span>
+        <a href="#about" onclick="closeMenu()">About</a>
+        <a href="#Robotics" onclick="closeMenu()">Robotics</a>
+        <a href="#cv" onclick="closeMenu()">C.V.</a>
+        <a href="#contact" onclick="closeMenu()">Contact</a>
+    </div>
 
-  footer {
-    margin-left: auto;
-    margin-right: auto;
-    width: 50em;
-    text-align: left;
-    padding-left: 2em;
-    /* font-size: small; */
-    height: auto;
-    background-color: #B1A2CA;
-    border-top: solid #EFBE7D;
-  }
+    <div class="main-container">
+        <div id="left" class="left-section">
+            <div class="skew-wrapper-left">
+                <canvas id="doodle">
+                </canvas>
+            </div>
+        </div>
+        <div class="right-section">
+            <div id="right" class="skew-wrapper">
+                <div>
+                    <h1 class="dynamic-text">Hello,</h1>
+                    <h2 class="dynamic-text-2">I am Thomas Horstink</h2>
+                    <hr style="margin-top: 10px;
+                    margin-bottom: 10px;
+                   border-top: 2px solid black;
+                   width: 100%;
+                   display: block;">
+                    <a href="https://github.com/thorstink" style="width: 100%;
+                    color: black;
+                    /* #ef3e23 border */
+                    font-family: inherit;
+                    /* Inherit font family from the rest of the page */
+                    font-weight: inherit;
+                    /* Inherit font weight from the rest of the page */
+                    text-align: left;
+                    /* Align text to the left */
+                    cursor: pointer;
+                    transition: all 0.2s ease;
+                    /* Smooth transition for hover effect */
+                    /* Add padding to the left to give some space from the edge */
+                    margin-top: 10px;
+                    font-size: 2.5rem;
+                        /* Minimum, dynamic, and maximum size */
+                        margin: 0;">Just show me the code</a>
+                </div>
+                <div id="About">
+                    <h3>This is my online portfolio.</h3>
+                    <p>A place for highlighting some of my work and ideas, mostly technical and robotics
+                        related.
+                    </p>
+                    <p>
+                        In the past 7 years I have professionally developed and implemented algorithms and applications
+                        applied to robotic
+                        products. Varying from mobile ground vehicles<sup><a
+                                href="https://robohub.org/wp-content/uploads/2016/04/LeaRobot.jpg"
+                                target="_blank">1</a>, <a href="https://www.youtube.com/watch?v=yCJxN_3nnEc"
+                                target="_blank">2</a>, <a href="https://www.youtube.com/watch?v=3PcUDiX4OXM"
+                                target="_blank">3</a></sup>, a 7 degree of freedom
+                        arm<sup><a href="https://www.universal-robots.com/products/ur10-robot/"
+                                target="_blank">4</a></sup> and currently
+                        quadcopter drones at Mainblades<sup><a href="https://www.mainblades.com"
+                                target="_blank">5</a></sup>. Originally I
+                        was mostly focussed on state-estimation, e.g. odometry, SLAM and localization. Later that was
+                        extended by planning and control. Nowadays I consider myself to be a roboticist of many traits
+                        with a lot of practical development experience in the domain of embeddex linux and C++.</p>
+                    </br>
+                </div>
 
-  ol {
-    list-style-type: none;
-  }
+                <div id="Robotics">
+                    <h3>Robotics</h3>
+                    </br>
+                    <p>
+                        For now, there's a link to my presentation at <a href="https://roscon.ros.org/2025/"
+                            target="_blank">ROSCON</a> about my Petri net project <a
+                            href="https://github.com/thorstink/Symmetri" target="_blank">Symmetri</a>:
+                    </p>
+                    <button class="link-button"
+                        onclick="window.open('https://vimeo.com/879001315?turnstile=0.RasPsvoDNaN6B9i4LhDvTIrahc_61Uqg8hcQ2-pFMfSetb0nuPIjzLLh9Itxzc0_R4VYqmdGd3R6kONlCnCrrPUbawBpqXBFaA5CajIa0VcaZI6cq1E6JD7rskBgaq_g7_zy72tNtpJ8HPvXN8nO6iAcqpqx3_KLz4UYLrq4bk5fllsKNP-tpr1VcIy2k4yzdlHOTo-EFQC-UhAi9sA5oS76WKp-3e2uAWE9E3-BjI701rH7_tFs5pxKnBC-Bebny3n0f0vTf3to51EyzyCIh5pPKaVpBgRX-Gn_aC5swKLQAM6raDVnTq67vMPzQr1X0xk4dGXudoaLUM0mttJIJfN_IQipwzGNS_0ZCgjLbbkU0ejJl8kbB2pPR4mOvFVhytJjOJY6d02_CBFwDbea_rfLSeIUmgt9koBVDFT_9DW87NpFQiBcpLLtge6UlHQxJqaCKf5BmJq9PW6SkWCz_Ln4O6jo7cU6FFcb5dlKBbKSH8CtoxoSx6kHG3ZDnki_QI0SMoFy2KmJsQb-QGJN4PDzMJwLLqDI5qiLEgZV9Hdxw79lxYx8MvO1qdc9GrEX0qmeSz75cJavE9n3zIBivj32HtJ2fS-TIaZAFUR9VxkWgvWs0HQjE3yjTlEnYJ3gvGAjU0vV_QoQ-swFJ3mpRiVp1JvB2MZ5O2TJ5cWUJo3PNwACZfKk0AvO-oEZYo_eTvQokMiYjArwA8AA3K9L03hZfA79nygqe701vNdd8Snt3h-717NfO56AN3aRp1OdUILXibelnzGp0i8rE4PcRSvbUJ6zverNbvMqBy9IpTRgWziL1_oA5toPOtFGCxhDRPzc2svFfbbNzNjto3TXYA.zSGXZ09l6BlHa-HHHWB1wA.a81bdbaddfdeba00f023290e3a9d37f0ce580137a153200f2d7aebf44a756d12', '_blank');">Mastering
+                        your ROS system state with Petri nets</button>
+                    </br>
+                    <p>And some unfinished articles:</p>
+                    <button class="link-button" onclick="window.open('articles/multinomial-resampling');">Thoughts on
+                        multinomial resampling implementations in C++</button>
+                    <button class="link-button" onclick="window.open('articles/symmetri');">Thoughts on
+                        Composing and nesting in Symmetri</button>
+                    <button class="link-button" onclick="window.open('articles/petrinets');">Generating programs from
+                        Petri nets</button>
+                </div>
 
-  ol li:before {
-    content: "[" counter(section, decimal) "] ";
-  }
 
-  ol li {
-    counter-increment: section;
-  }
 
-  ul,
-  ol {
-    padding: 0;
-    margin: 0;
-  }
+                <div id="cv">
+                    <h3>Curriculum Vitae</h3>
+                    </br>
+                    <h4>Experience</h4>
+                    <a href="https://www.mainblades.com" target="_blank">
+                        <div class="Keynotelist">
+                            <img src="images/mainblades_logo.jpeg" />
+                            <p>Mainblades | Aircraft drone Inspections</p>
+                            <p class="date">August 2021 - Present</p>
+                        </div>
+                    </a>
+                    <a href="https://smart-robotics.io" target="_blank">
+                        <div class="Keynotelist">
+                            <img src="images/smart_robotics_logo.jpeg" />
+                            <p>Smart Robotics </p>
+                            <p class="date">November 2020 - June 2021</p>
+                        </div>
+                    </a>
+                    <a href="https://www.lely.com" target="_blank">
+                        <div class="Keynotelist">
+                            <img src="images/lely_industries_nv_logo.jpeg" />
+                            <p>Lely industries</p>
+                            <p class="date">April 2018 - November 2020</p>
+                        </div>
+                    </a>
+                    <div class="Keynotelist">
+                        <img src="images/robot_care_systems.jpeg" />
+                        <p>Robot Care Systems</p>
+                        <p class="date">September 2016 - March 2018</p>
+                    </div>
+                    <h4>Education</h4>
+                    <a href="https://www.tudelft.nl" target="_blank">
+                        <div class="Keynotelist">
+                            <img src="images/tu_delft.jpeg" />
+                            <p>Master of Science, Mechanical Engineering</p>
+                            <p class="date">September 2015 - October 2017</p>
+                        </div>
+                    </a>
+                    <a href="https://www.tudelft.nl" target="_blank">
+                        <div class="Keynotelist">
+                            <img src="images/tu_delft.jpeg" />
+                            <p>Bachelor of Science, Mechanical Engineering</p>
+                            <p class="date">September 2010 - August 2015</p>
+                        </div>
+                    </a>
+                    <a href="https://laurenslyceum.nl" target="_blank">
+                        <div class="Keynotelist">
+                            <img src="images/laurens.jpeg" />
+                            <p>VWO Natuur & Techniek</p>
+                            <p class="date">September 2003 - August 2009</p>
+                        </div>
+                    </a>
+                </div>
+                <div id="contact">
+                    <h3>Contact</h3>
+                    <p>
+                        Anyone is free to contact me with questions about my work or interests. Recruiters are only
+                        appreciated with concrete opportunities (salary indication and company name in the least).
+                    </p>
+                    </br>
+                    <p>Please contact me through e-mail at <a href="mailto:knitsroh@horst.ink">knitsroh@horst.ink</a>.
+                    </p>
+                    <p>You can also follow and or contact me through my <a href=https://github.com/thorstink
+                            target="_blank">github profile-page</a>.</p>
+                </div>
+                </br>
+                </br>
+                </br>
+            </div>
 
-  nav ul {
-    display: inline-block;
-    list-style: none;
-  }
+        </div>
 
-  nav li {
-    float: left;
-    position: relative;
-    border-right: solid #EFBE7D;
-    padding-right: 2em;
-    padding-left: 2em;
-  }
 
-  nav li:last-child {
-    border-right: none;
-  }
+    </div>
 
-  nav li:first-child {
-    padding-left: 0em;
-  }
+    <footer>
+        <p><span>Just a website in html, css and javascript.</span>
+            <span>&copy; 2025 Thomas Horstink</span>
+        </p>
+    </footer>
 
-  nav li a {
-    color: #FF6D6A;
-    text-decoration: none;
-  }
+    <script>
 
-  nav li a:hover {
-    color: #EFBE7D;
-  }
 
-  p {
-    text-align: justify;
-  }
-</style>
 
-<body>
-  <nav>
-    <ul>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Technical stuff</a></li>
-      <li><a href="#">Other stuff</a></li>
-      <li><a href="#">Contact</a></li>
-    </ul>
-  </nav>
-  <main>
-    <h1>Hello,</h1>
-    <h2> I am Thomas Horstink</h2>
-    <p>This is my online portfolio. A place for highlighting some of my work and ideas, mostly technical and robotics
-      related.
-      In the past 7 years I have professionally developed and implemented algorithms and applications applied to robotic
-      products. Varying from mobile ground vehicles<sup><a
-          href="https://robohub.org/wp-content/uploads/2016/04/LeaRobot.jpg" target="_blank">1</a>, <a
-          href="https://www.youtube.com/watch?v=yCJxN_3nnEc" target="_blank">2</a>, <a
-          href="https://www.youtube.com/watch?v=3PcUDiX4OXM" target="_blank">3</a></sup>, a 7 degree of freedom
-      arm<sup><a href="https://www.universal-robots.com/products/ur10-robot/" target="_blank">4</a></sup> and currently
-      quadcopter drones at Mainblades<sup><a href="https://www.mainblades.com" target="_blank">5</a></sup>. Originally I
-      was mostly focussed on state-estimation, e.g. odometry, SLAM and localization. Later that was
-      extended by planning and control. Nowadays I consider myself to be a roboticist of many traits with a lot of practical development experience.
-    </p>
-    <p>
 
-    </p>
-  </main>
-  <footer>
-    <ol>
-      <li>
-        LEA, the lean elderly assistant from Robot Care Systems. Unfortunately development has ceased.
-      </li>
-      <li>
-        Lely Collector, a cow-manure collection robot.
-      </li>
-      <li>
-        Lely Juno, a feed-push robot.
-      </li>
-      <li>
-        Smart Robotic's Smart Item Picker based on a Universal Robotics arm.
-      </li>
-      <li>
-        A Mainblades inspection drone, based on the DJI M300 with custom payload
-      </li>
+        function updateImage() {
+            function randInt(min, max) {
+                return Math.floor(Math.random() * (max - min) + min)
+            }
 
-    </ol>
+            class Point {
+                constructor(x, y) {
+                    this.x = x
+                    this.y = y
+                }
+            }
 
-  </footer>
+            var colors = [
+                'white',
+                'white',
+                'white',
+                // 'white',
+                '#000000',
+                'rgb(239, 62, 35)',
+                'blue',
+                'yellow'
+            ]
+
+            class Rectangle {
+                constructor(min, max) {
+                    this.min = min
+                    this.max = max
+                }
+
+                get width() {
+                    return this.max.x - this.min.x
+                }
+
+                get height() {
+                    return this.max.y - this.min.y
+                }
+
+                draw(ctx) {
+                    // Draw clockwise
+                    ctx.moveTo(this.min.x, this.min.y)
+                    ctx.lineTo(this.max.x, this.min.y)
+                    ctx.lineTo(this.max.x, this.max.y)
+                    ctx.lineTo(this.min.x, this.max.y)
+                    ctx.lineTo(this.min.x, this.min.y)
+                }
+
+                split(xPad, yPad, depth, limit, ctx) {
+                    ctx.fillStyle = colors[randInt(0, colors.length)]
+                    ctx.fillRect(this.min.x, this.min.y, this.max.x, this.max.y)
+                    this.draw(ctx)
+
+                    // Check the level of recursion
+                    if (depth === limit) {
+                        return
+                    }
+
+                    // Check the rectangle is enough large and tall
+                    if (this.width < 2 * xPad || this.height < 2 * yPad) {
+                        return
+                    }
+
+                    // If the rectangle is wider than it's height do a left/right split
+                    var r1 = new Rectangle()
+                    var r2 = new Rectangle()
+                    if (this.width > this.height) {
+                        var x = randInt(this.min.x + xPad, this.max.x - xPad)
+                        r1 = new Rectangle(this.min, new Point(x, this.max.y))
+                        r2 = new Rectangle(new Point(x, this.min.y), this.max)
+                        // Else do a top/bottom split
+                    } else {
+                        var y = randInt(this.min.y + yPad, this.max.y - yPad)
+                        r1 = new Rectangle(this.min, new Point(this.max.x, y))
+                        r2 = new Rectangle(new Point(this.min.x, y), this.max)
+                    }
+
+                    // Split the sub-rectangles
+                    r1.split(xPad, yPad, depth + 1, limit, ctx)
+                    r2.split(xPad, yPad, depth + 1, limit, ctx)
+                }
+            }
+
+            var el_right = document.getElementById('right')
+            var el_left = document.getElementById('left')
+            var canvas = document.getElementById('doodle')
+            var ctx = canvas.getContext('2d')
+            h = document.getElementById('page').offsetWidth == el_left.offsetWidth ? 140 : parseInt(el_right.offsetHeight)
+            canvas.setAttribute('width', parseInt(el_left.offsetWidth));
+            canvas.setAttribute('height', h);
+            ctx.beginPath()
+            ctx.lineWidth = 2
+
+            var xPad = Math.floor(canvas.width * 0.1)
+            var yPad = Math.floor(canvas.height * 0.1)
+
+            var initialRect = new Rectangle(new Point(0, 0), new Point(canvas.width, canvas.height))
+
+            initialRect.split(xPad, yPad, 0, 5, ctx)
+
+            ctx.stroke()
+        }
+
+        // Call the function on page load and window resize
+        window.addEventListener('resize', updateImage);
+        window.addEventListener('load', updateImage);
+
+        const hamburger = document.querySelector('.hamburger');
+        const fullscreenMenu = document.getElementById('fullscreen-menu');
+        const closeMenuBtn = document.getElementById('close-menu');
+
+        hamburger.addEventListener('click', () => {
+            fullscreenMenu.classList.add('active');
+        });
+
+        closeMenuBtn.addEventListener('click', () => {
+            fullscreenMenu.classList.remove('active');
+        });
+
+        function closeMenu() {
+            fullscreenMenu.classList.remove('active');
+        }
+
+        // Add click event listener to the accordion header
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', function () {
+                const accordion = this.parentElement;
+
+                // Toggle the "open" class
+                accordion.classList.toggle('open');
+            });
+        });
+    </script>
+
 </body>
 
 </html>
